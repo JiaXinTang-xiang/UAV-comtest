@@ -1,0 +1,35 @@
+running develop
+running egg_info
+creating uav_competition.egg-info
+writing uav_competition.egg-info/PKG-INFO
+writing dependency_links to uav_competition.egg-info/dependency_links.txt
+writing entry points to uav_competition.egg-info/entry_points.txt
+writing requirements to uav_competition.egg-info/requires.txt
+writing top-level names to uav_competition.egg-info/top_level.txt
+writing manifest file 'uav_competition.egg-info/SOURCES.txt'
+reading manifest file 'uav_competition.egg-info/SOURCES.txt'
+writing manifest file 'uav_competition.egg-info/SOURCES.txt'
+running build_ext
+Creating /home/jiaxintang/桌面/bao/uav_competition_ws/install/uav_competition/lib/python3.10/site-packages/uav-competition.egg-link (link to .)
+Installing mission_controller script to /home/jiaxintang/桌面/bao/uav_competition_ws/install/uav_competition/bin
+Installing mock_flight script to /home/jiaxintang/桌面/bao/uav_competition_ws/install/uav_competition/bin
+Installing preflight_check script to /home/jiaxintang/桌面/bao/uav_competition_ws/install/uav_competition/bin
+Installing px4_offboard script to /home/jiaxintang/桌面/bao/uav_competition_ws/install/uav_competition/bin
+Installing safety_manager script to /home/jiaxintang/桌面/bao/uav_competition_ws/install/uav_competition/bin
+Installing sensor_adapter script to /home/jiaxintang/桌面/bao/uav_competition_ws/install/uav_competition/bin
+
+Installed /home/jiaxintang/桌面/bao/uav_competition_ws/build/uav_competition
+running symlink_data
+creating /home/jiaxintang/桌面/bao/uav_competition_ws/install/uav_competition/share/ament_index
+creating /home/jiaxintang/桌面/bao/uav_competition_ws/install/uav_competition/share/ament_index/resource_index
+creating /home/jiaxintang/桌面/bao/uav_competition_ws/install/uav_competition/share/ament_index/resource_index/packages
+symbolically linking /home/jiaxintang/桌面/bao/uav_competition_ws/build/uav_competition/resource/uav_competition -> /home/jiaxintang/桌面/bao/uav_competition_ws/install/uav_competition/share/ament_index/resource_index/packages
+symbolically linking /home/jiaxintang/桌面/bao/uav_competition_ws/build/uav_competition/package.xml -> /home/jiaxintang/桌面/bao/uav_competition_ws/install/uav_competition/share/uav_competition
+creating /home/jiaxintang/桌面/bao/uav_competition_ws/install/uav_competition/share/uav_competition/launch
+symbolically linking /home/jiaxintang/桌面/bao/uav_competition_ws/build/uav_competition/launch/simulation.launch.py -> /home/jiaxintang/桌面/bao/uav_competition_ws/install/uav_competition/share/uav_competition/launch
+symbolically linking /home/jiaxintang/桌面/bao/uav_competition_ws/build/uav_competition/launch/mission.launch.py -> /home/jiaxintang/桌面/bao/uav_competition_ws/install/uav_competition/share/uav_competition/launch
+creating /home/jiaxintang/桌面/bao/uav_competition_ws/install/uav_competition/share/uav_competition/config
+symbolically linking /home/jiaxintang/桌面/bao/uav_competition_ws/build/uav_competition/config/mission.yaml -> /home/jiaxintang/桌面/bao/uav_competition_ws/install/uav_competition/share/uav_competition/config
+creating /home/jiaxintang/桌面/bao/uav_competition_ws/install/uav_competition/share/uav_competition/worlds
+symbolically linking /home/jiaxintang/桌面/bao/uav_competition_ws/build/uav_competition/worlds/competition_course.world -> /home/jiaxintang/桌面/bao/uav_competition_ws/install/uav_competition/share/uav_competition/worlds
+creating /home/jiaxintang/桌面/bao/uav_competition_ws/install/uav_competition/share/uav_competition/models
