@@ -1,0 +1,8 @@
+# Training sensor positions are FRD coordinates relative to base_link.
+param set EKF2_RNG_POS_X -0.29
+param set EKF2_RNG_POS_Z -0.35
+# Flat indoor course: use real downward range as height reference.
+param set EKF2_RNG_CTRL 2
+param set EKF2_HGT_REF 2
+# PX4's default 60 s drain is shorter than a whole-course training flight.
+param set SIM_BAT_DRAIN 1200

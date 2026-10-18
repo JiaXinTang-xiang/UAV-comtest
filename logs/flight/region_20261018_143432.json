@@ -1,0 +1,134 @@
+{
+  "state": "FAILED",
+  "failure": "no_safe_path: Waypoint lacks 0.35 m wall clearance: (5.005633851164021, 8.95239035319537) -> (7.5, 9.0)",
+  "route": "left",
+  "test_mode": false,
+  "test_events": [],
+  "visited": [],
+  "planned": [
+    {
+      "region": "TRANSIT_1",
+      "path": [
+        [
+          5.0,
+          9.0
+        ],
+        [
+          7.5,
+          9.0
+        ]
+      ]
+    },
+    {
+      "region": "AREA_2",
+      "path": [
+        [
+          7.5,
+          9.0
+        ],
+        [
+          7.5,
+          7.0
+        ]
+      ]
+    },
+    {
+      "region": "AREA_3",
+      "path": [
+        [
+          7.5,
+          7.0
+        ],
+        [
+          7.5,
+          5.0
+        ]
+      ]
+    },
+    {
+      "region": "TRANSIT_3",
+      "path": [
+        [
+          7.5,
+          5.0
+        ],
+        [
+          9.4,
+          5.0
+        ]
+      ]
+    },
+    {
+      "region": "AREA_4",
+      "path": [
+        [
+          9.4,
+          5.0
+        ],
+        [
+          9.4,
+          3.0
+        ]
+      ]
+    },
+    {
+      "region": "AREA_5",
+      "path": [
+        [
+          9.4,
+          3.0
+        ],
+        [
+          9.4,
+          1.0
+        ]
+      ]
+    },
+    {
+      "region": "LAND_APPROACH",
+      "path": [
+        [
+          9.4,
+          1.0
+        ],
+        [
+          7.0,
+          1.0
+        ]
+      ]
+    }
+  ],
+  "replans": [
+    {
+      "reason": "region_transition",
+      "from": [
+        4.963956173160113,
+        8.934987082146108
+      ],
+      "region": "TRANSIT_1",
+      "obstacle_points": 0,
+      "path": [
+        [
+          4.963956173160113,
+          8.934987082146108
+        ],
+        [
+          7.5,
+          9.0
+        ]
+      ]
+    },
+    {
+      "reason": "lidar_path_blocked",
+      "from": [
+        5.005633851164021,
+        8.95239035319537
+      ],
+      "region": "TRANSIT_1",
+      "obstacle_points": 5,
+      "error": "Waypoint lacks 0.35 m wall clearance: (5.005633851164021, 8.95239035319537) -> (7.5, 9.0)"
+    }
+  ],
+  "flight_state": "COMPLETE",
+  "elapsed_s": 25.15655185300011
+}

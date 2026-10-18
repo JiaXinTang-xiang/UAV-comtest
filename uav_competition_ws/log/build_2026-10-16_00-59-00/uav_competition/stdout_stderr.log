@@ -1,0 +1,21 @@
+running develop
+running egg_info
+writing uav_competition.egg-info/PKG-INFO
+writing dependency_links to uav_competition.egg-info/dependency_links.txt
+writing entry points to uav_competition.egg-info/entry_points.txt
+writing requirements to uav_competition.egg-info/requires.txt
+writing top-level names to uav_competition.egg-info/top_level.txt
+reading manifest file 'uav_competition.egg-info/SOURCES.txt'
+writing manifest file 'uav_competition.egg-info/SOURCES.txt'
+running build_ext
+Creating /home/jiaxintang/桌面/bao/uav_competition_ws/install/uav_competition/lib/python3.10/site-packages/uav-competition.egg-link (link to .)
+Installing mission_controller script to /home/jiaxintang/桌面/bao/uav_competition_ws/install/uav_competition/lib/uav_competition
+Installing mock_flight script to /home/jiaxintang/桌面/bao/uav_competition_ws/install/uav_competition/lib/uav_competition
+Installing preflight_check script to /home/jiaxintang/桌面/bao/uav_competition_ws/install/uav_competition/lib/uav_competition
+Installing px4_offboard script to /home/jiaxintang/桌面/bao/uav_competition_ws/install/uav_competition/lib/uav_competition
+Installing safety_manager script to /home/jiaxintang/桌面/bao/uav_competition_ws/install/uav_competition/lib/uav_competition
+Installing sensor_adapter script to /home/jiaxintang/桌面/bao/uav_competition_ws/install/uav_competition/lib/uav_competition
+
+Installed /home/jiaxintang/桌面/bao/uav_competition_ws/build/uav_competition
+running symlink_data
+symbolically linking /home/jiaxintang/桌面/bao/uav_competition_ws/build/uav_competition/launch/px4_hover.launch.py -> /home/jiaxintang/桌面/bao/uav_competition_ws/install/uav_competition/share/uav_competition/launch

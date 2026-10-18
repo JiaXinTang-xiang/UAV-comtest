@@ -13,7 +13,9 @@ setup(
         (os.path.join('share', package_name, 'launch'), glob('launch/*.py')),
         (os.path.join('share', package_name, 'config'), glob('config/*.yaml')),
         (os.path.join('share', package_name, 'worlds'), glob('worlds/*.world')),
-        (os.path.join('share', package_name, 'models'), glob('models/*')),
+        *[(os.path.join('share', package_name, base),
+           [os.path.join(base, f) for f in files])
+          for base, dirs, files in os.walk('models', followlinks=True) if files],
     ],
     install_requires=['setuptools', 'PyYAML'],
     zip_safe=True,
@@ -24,5 +26,7 @@ setup(
         'safety_manager = uav_competition.safety_manager:main',
         'mock_flight = uav_competition.mock_flight:main',
         'px4_offboard = uav_competition.px4_offboard_node:main',
+        'px4_region_mission = uav_competition.px4_region_mission:main',
+        'px4_sensor_adapter = uav_competition.px4_sensor_adapter:main',
     ]},
 )

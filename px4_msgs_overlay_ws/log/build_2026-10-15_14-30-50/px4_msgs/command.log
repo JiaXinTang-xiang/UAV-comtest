@@ -1,0 +1,6 @@
+Invoking command in '/tmp/px4_msgs_ws.wAxOsP/build/px4_msgs': CMAKE_PREFIX_PATH=/opt/ros/humble /usr/bin/cmake /tmp/px4_msgs_ws.wAxOsP/src/px4_msgs -DCMAKE_INSTALL_PREFIX=/tmp/px4_msgs_ws.wAxOsP/install
+Invoked command in '/tmp/px4_msgs_ws.wAxOsP/build/px4_msgs' returned '0': CMAKE_PREFIX_PATH=/opt/ros/humble /usr/bin/cmake /tmp/px4_msgs_ws.wAxOsP/src/px4_msgs -DCMAKE_INSTALL_PREFIX=/tmp/px4_msgs_ws.wAxOsP/install
+Invoking command in '/tmp/px4_msgs_ws.wAxOsP/build/px4_msgs': CMAKE_PREFIX_PATH=/opt/ros/humble /usr/bin/cmake --build /tmp/px4_msgs_ws.wAxOsP/build/px4_msgs -- -j16 -l16
+Invoked command in '/tmp/px4_msgs_ws.wAxOsP/build/px4_msgs' returned '0': CMAKE_PREFIX_PATH=/opt/ros/humble /usr/bin/cmake --build /tmp/px4_msgs_ws.wAxOsP/build/px4_msgs -- -j16 -l16
+Invoking command in '/tmp/px4_msgs_ws.wAxOsP/build/px4_msgs': CMAKE_PREFIX_PATH=/opt/ros/humble /usr/bin/cmake --install /tmp/px4_msgs_ws.wAxOsP/build/px4_msgs
+Invoked command in '/tmp/px4_msgs_ws.wAxOsP/build/px4_msgs' returned '0': CMAKE_PREFIX_PATH=/opt/ros/humble /usr/bin/cmake --install /tmp/px4_msgs_ws.wAxOsP/build/px4_msgs

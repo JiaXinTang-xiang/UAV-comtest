@@ -3,6 +3,8 @@ mission_controller = uav_competition.mission_controller:main
 mock_flight = uav_competition.mock_flight:main
 preflight_check = uav_competition.preflight_check:main
 px4_offboard = uav_competition.px4_offboard_node:main
+px4_region_mission = uav_competition.px4_region_mission:main
+px4_sensor_adapter = uav_competition.px4_sensor_adapter:main
 safety_manager = uav_competition.safety_manager:main
 sensor_adapter = uav_competition.sensor_adapter:main
 

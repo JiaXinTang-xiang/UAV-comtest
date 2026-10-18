@@ -3,7 +3,7 @@ mission:
   altitude_tolerance: 0.10
   position_tolerance: 0.35
   max_mission_seconds: 180.0
-  max_xy_speed: 1.5
+  max_xy_speed: 0.5
   control_rate_hz: 20.0
   frame_id: map
   # Gazebo world x is mirrored around x=5 to match the public map on screen.
@@ -16,7 +16,7 @@ mission:
   landing_target: [7.0, 1.0]
   route:
     right: [[5.0, 9.0], [6.0, 7.0], [5.0, 5.0], [2.0, 3.0], [4.0, 1.0], [6.0, 1.0], [7.0, 1.0]]
-    left: [[5.0, 9.0], [8.0, 7.0], [8.0, 5.0], [9.0, 3.0], [8.0, 1.0], [7.0, 1.0]]
+    left: [[5.0, 9.0], [7.5, 9.0], [7.5, 7.0], [7.5, 5.0], [9.4, 5.0], [9.4, 3.0], [9.4, 1.0], [7.0, 1.0]]
   selected_route: right
 safety:
   bounds: [0.25, 9.75, 0.25, 9.75]
@@ -29,4 +29,41 @@ training_assumptions:
   wall_height: 3.0
   wall_thickness: 0.15
   official_wall_height_known: false
-  optical_flow_is_proxy: true
+  optical_flow_is_proxy: false
+# Planning uses the actual collision boxes in competition_course.world.
+planner:
+  clearance: 0.70
+  resolution: 0.10
+  waypoint_tolerance: 0.12
+  lidar_stop_distance: 0.48
+  # Emergency landing is reserved for a persistent, extremely close return.
+  # The larger lidar_stop_distance is used for replanning/slowdown decisions.
+  emergency_landing_distance: 0.20
+  emergency_sector_half_angle_deg: 45.0
+  corridor_limit: 0.40
+# Training coordinates use the approved mirrored Gazebo world, not image x.
+# Left-side labels refer to the red route in the original map image.
+route_profiles:
+  right:
+    clearance: 0.70
+    max_xy_speed: 0.50
+    corridor_limit: 0.40
+    targets:
+      AREA_2: [6.0, 7.0]
+      AREA_3: [5.0, 5.0]
+      AREA_4: [2.0, 3.0]
+      AREA_5: [4.0, 1.0]
+  left:
+    # The red route uses the narrow outer corridor in the training map.
+    # 0.35 m is the Iris body-radius-level clearance; the route is slowed
+    # down and the global geofence/lidar/corridor protections remain active.
+    clearance: 0.35
+    max_xy_speed: 0.25
+    corridor_limit: 0.30
+    targets:
+      TRANSIT_1: [7.5, 9.0]
+      AREA_2: [7.5, 7.0]
+      AREA_3: [7.5, 5.0]
+      TRANSIT_3: [9.4, 5.0]
+      AREA_4: [9.4, 3.0]
+      AREA_5: [9.4, 1.0]

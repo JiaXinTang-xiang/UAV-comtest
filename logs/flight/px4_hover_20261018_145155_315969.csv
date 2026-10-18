@@ -1,0 +1,1 @@
+elapsed_s,px4_timestamp_us,state,map_x,map_y,height_above_start_m,vx,vy,vz,nav_state,armed,target_height_m,gazebo_world_z_m

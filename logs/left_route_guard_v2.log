@@ -1,0 +1,176 @@
+[INFO] [launch]: All log files can be found below /home/jiaxintang/.ros/log/2026-10-18-15-05-06-203146-jiaxintang-36492
+[INFO] [launch]: Default logging verbosity is set to INFO
+[INFO] [px4_offboard-1]: process started with pid [36520]
+[INFO] [px4_sensor_adapter-2]: process started with pid [36522]
+[INFO] [preflight_check-3]: process started with pid [36524]
+[INFO] [px4_region_mission-4]: process started with pid [36526]
+[px4_region_mission-4] [INFO] [1792307106.942426793] [px4_region_mission]: route=left; ready for /uav/mission/start; all paths have clearance
+[px4_offboard-1] [INFO] [1792307106.961672936] [px4_offboard]: Waiting for PX4; hover_test=False; log=/home/jiaxintang/桌面/bao/logs/flight/px4_hover_20261018_150506_918163.csv
+[px4_offboard-1] [WARN] [1792307107.096227784] [px4_offboard]: Sensor report: WAITING:pose:missing_or_stale (valid_age=448.249s,received_age=448.249s),velocity:missing_or_stale (valid_age=448.249s,received_age=448.249s)
+[px4_offboard-1] [WARN] [1792307107.113934647] [px4_offboard]: Sensor report: WAITING:pose:missing_or_stale (valid_age=never,received_age=never),velocity:missing_or_stale (valid_age=never,received_age=never)
+[preflight_check-3] [WARN] [1792307107.138004088] [preflight_check]: WAITING:pose:missing_or_stale (valid_age=never,received_age=never),velocity:missing_or_stale (valid_age=never,received_age=never)
+[px4_offboard-1] [WARN] [1792307107.295916019] [px4_offboard]: Sensor report: WAITING:pose:missing_or_stale (valid_age=448.449s,received_age=448.449s),velocity:missing_or_stale (valid_age=448.449s,received_age=448.449s)
+[px4_offboard-1] [WARN] [1792307107.314687301] [px4_offboard]: Sensor report: WAITING:pose:missing_or_stale (valid_age=never,received_age=never),velocity:missing_or_stale (valid_age=never,received_age=never)
+[px4_offboard-1] [WARN] [1792307107.495925006] [px4_offboard]: Sensor report: WAITING:pose:missing_or_stale (valid_age=448.649s,received_age=448.649s),velocity:missing_or_stale (valid_age=448.649s,received_age=448.649s)
+[px4_offboard-1] [WARN] [1792307107.514065664] [px4_offboard]: Sensor report: WAITING:pose:missing_or_stale (valid_age=never,received_age=never),velocity:missing_or_stale (valid_age=never,received_age=never)
+[px4_offboard-1] [WARN] [1792307107.695765497] [px4_offboard]: Sensor report: WAITING:pose:missing_or_stale (valid_age=448.849s,received_age=448.849s),velocity:missing_or_stale (valid_age=448.849s,received_age=448.849s)
+[px4_offboard-1] [WARN] [1792307107.714867119] [px4_offboard]: Sensor report: WAITING:pose:missing_or_stale (valid_age=never,received_age=never),velocity:missing_or_stale (valid_age=never,received_age=never)
+[px4_offboard-1] [WARN] [1792307107.895653167] [px4_offboard]: Sensor report: WAITING:pose:missing_or_stale (valid_age=449.049s,received_age=449.049s),velocity:missing_or_stale (valid_age=449.049s,received_age=449.049s)
+[px4_offboard-1] [WARN] [1792307107.914600729] [px4_offboard]: Sensor report: WAITING:pose:missing_or_stale (valid_age=never,received_age=never),velocity:missing_or_stale (valid_age=never,received_age=never)
+[px4_offboard-1] [WARN] [1792307108.095659800] [px4_offboard]: Sensor report: WAITING:pose:missing_or_stale (valid_age=449.249s,received_age=449.249s),velocity:missing_or_stale (valid_age=449.249s,received_age=449.249s)
+[px4_offboard-1] [WARN] [1792307108.114327256] [px4_offboard]: Sensor report: WAITING:pose:missing_or_stale (valid_age=never,received_age=never),velocity:missing_or_stale (valid_age=never,received_age=never)
+[px4_offboard-1] [WARN] [1792307108.296319008] [px4_offboard]: Sensor report: WAITING:pose:missing_or_stale (valid_age=449.449s,received_age=449.449s),velocity:missing_or_stale (valid_age=449.449s,received_age=449.449s)
+[px4_offboard-1] [WARN] [1792307108.314278505] [px4_offboard]: Sensor report: WAITING:pose:missing_or_stale (valid_age=never,received_age=never),velocity:missing_or_stale (valid_age=never,received_age=never)
+[px4_offboard-1] [WARN] [1792307108.495888961] [px4_offboard]: Sensor report: WAITING:pose:missing_or_stale (valid_age=449.649s,received_age=449.649s),velocity:missing_or_stale (valid_age=449.649s,received_age=449.649s)
+[px4_offboard-1] [WARN] [1792307108.514466268] [px4_offboard]: Sensor report: WAITING:pose:missing_or_stale (valid_age=never,received_age=never),velocity:missing_or_stale (valid_age=never,received_age=never)
+[px4_offboard-1] [WARN] [1792307108.695965435] [px4_offboard]: Sensor report: WAITING:pose:missing_or_stale (valid_age=449.849s,received_age=449.849s),velocity:missing_or_stale (valid_age=449.849s,received_age=449.849s)
+[px4_offboard-1] [WARN] [1792307108.713715719] [px4_offboard]: Sensor report: WAITING:pose:missing_or_stale (valid_age=never,received_age=never),velocity:missing_or_stale (valid_age=never,received_age=never)
+[px4_offboard-1] [WARN] [1792307108.895895745] [px4_offboard]: Sensor report: WAITING:pose:missing_or_stale (valid_age=450.049s,received_age=450.049s),velocity:missing_or_stale (valid_age=450.049s,received_age=450.049s)
+[px4_offboard-1] [WARN] [1792307108.914210589] [px4_offboard]: Sensor report: WAITING:pose:missing_or_stale (valid_age=never,received_age=never),velocity:missing_or_stale (valid_age=never,received_age=never)
+[px4_offboard-1] [WARN] [1792307109.096174639] [px4_offboard]: Sensor report: WAITING:pose:missing_or_stale (valid_age=450.249s,received_age=450.249s),velocity:missing_or_stale (valid_age=450.249s,received_age=450.249s)
+[px4_offboard-1] [WARN] [1792307109.114385749] [px4_offboard]: Sensor report: WAITING:pose:missing_or_stale (valid_age=never,received_age=never),velocity:missing_or_stale (valid_age=never,received_age=never)
+[px4_offboard-1] [INFO] [1792307109.135573268] [px4_offboard]: flight WAITING -> READY
+[preflight_check-3] [INFO] [1792307109.313490157] [preflight_check]: READY
+[preflight_check-3] [INFO] [1792307112.313610895] [preflight_check]: READY
+[preflight_check-3] [INFO] [1792307115.513513328] [preflight_check]: READY
+[preflight_check-3] [INFO] [1792307118.513588629] [preflight_check]: READY
+[preflight_check-3] [INFO] [1792307121.513843641] [preflight_check]: READY
+[preflight_check-3] [INFO] [1792307124.713463756] [preflight_check]: READY
+[preflight_check-3] [INFO] [1792307127.713557393] [preflight_check]: READY
+[preflight_check-3] [INFO] [1792307130.713517995] [preflight_check]: READY
+[preflight_check-3] [INFO] [1792307133.713557167] [preflight_check]: READY
+[px4_region_mission-4] [INFO] [1792307134.717236490] [px4_region_mission]: mission WAITING -> STARTING
+[px4_offboard-1] [INFO] [1792307134.722672008] [px4_offboard]: flight READY -> PRIMING
+[px4_region_mission-4] [INFO] [1792307134.772751726] [px4_region_mission]: mission STARTING -> TAKEOFF
+[px4_offboard-1] [INFO] [1792307136.235237152] [px4_offboard]: flight PRIMING -> SET_MODE
+[px4_offboard-1] [INFO] [1792307136.295224806] [px4_offboard]: PX4 command=176, result=0 (0=accepted)
+[px4_offboard-1] [INFO] [1792307136.335158961] [px4_offboard]: flight SET_MODE -> ARM
+[px4_offboard-1] [INFO] [1792307136.398205551] [px4_offboard]: PX4 command=400, result=0 (0=accepted)
+[px4_offboard-1] [INFO] [1792307136.435456717] [px4_offboard]: flight ARM -> TAKEOFF
+[preflight_check-3] [INFO] [1792307136.913549679] [preflight_check]: READY
+[preflight_check-3] [INFO] [1792307139.913912447] [preflight_check]: READY
+[preflight_check-3] [INFO] [1792307143.113823574] [preflight_check]: READY
+[preflight_check-3] [INFO] [1792307146.113937793] [preflight_check]: READY
+[px4_offboard-1] [INFO] [1792307147.435085568] [px4_offboard]: flight TAKEOFF -> ACTIVE
+[px4_region_mission-4] [INFO] [1792307147.472839379] [px4_region_mission]: mission TAKEOFF -> TRANSIT_1
+[px4_region_mission-4] [INFO] [1792307147.474623068] [px4_region_mission]: PLAN_REQUEST region_transition; obstacle_points=0; holding
+[px4_region_mission-4] [INFO] [1792307147.525198207] [px4_region_mission]: PLAN_READY waypoints=2
+[px4_region_mission-4] [WARN] [1792307148.123588846] [px4_region_mission]: near obstacle ignored while planned segment is clear: 0.230m angle=0.5deg
+[preflight_check-3] [INFO] [1792307149.313533727] [preflight_check]: READY
+[px4_region_mission-4] [WARN] [1792307150.323819233] [px4_region_mission]: near obstacle ignored while planned segment is clear: 0.278m angle=-32.6deg
+[preflight_check-3] [INFO] [1792307152.313932478] [preflight_check]: READY
+[px4_region_mission-4] [WARN] [1792307154.073221734] [px4_region_mission]: near obstacle ignored while planned segment is clear: 0.250m angle=24.6deg
+[preflight_check-3] [INFO] [1792307155.513497261] [preflight_check]: READY
+[px4_region_mission-4] [WARN] [1792307156.122596644] [px4_region_mission]: near obstacle ignored while planned segment is clear: 0.225m angle=4.5deg
+[px4_region_mission-4] [INFO] [1792307158.623068834] [px4_region_mission]: mission TRANSIT_1 -> AREA_2
+[px4_region_mission-4] [INFO] [1792307158.623917618] [px4_region_mission]: PLAN_REQUEST region_transition; obstacle_points=0; holding
+[px4_region_mission-4] [INFO] [1792307158.673001947] [px4_region_mission]: PLAN_READY waypoints=2
+[preflight_check-3] [INFO] [1792307158.713506514] [preflight_check]: READY
+[px4_region_mission-4] [WARN] [1792307158.773445848] [px4_region_mission]: near obstacle ignored while planned segment is clear: 0.289m angle=-124.8deg
+[px4_region_mission-4] [WARN] [1792307160.973422819] [px4_region_mission]: near obstacle ignored while planned segment is clear: 0.231m angle=-89.7deg
+[preflight_check-3] [INFO] [1792307161.713857978] [preflight_check]: READY
+[px4_region_mission-4] [WARN] [1792307164.523221114] [px4_region_mission]: near obstacle ignored while planned segment is clear: 0.221m angle=-80.7deg
+[preflight_check-3] [INFO] [1792307164.913489819] [preflight_check]: READY
+[px4_region_mission-4] [INFO] [1792307167.874462879] [px4_region_mission]: mission AREA_2 -> AREA_3
+[px4_region_mission-4] [INFO] [1792307167.875699902] [px4_region_mission]: PLAN_REQUEST region_transition; obstacle_points=0; holding
+[preflight_check-3] [INFO] [1792307167.913953732] [preflight_check]: READY
+[px4_region_mission-4] [INFO] [1792307167.923040967] [px4_region_mission]: PLAN_READY waypoints=2
+[px4_region_mission-4] [WARN] [1792307169.023385941] [px4_region_mission]: near obstacle ignored while planned segment is clear: 0.240m angle=-75.7deg
+[px4_region_mission-4] [WARN] [1792307171.023604078] [px4_region_mission]: near obstacle ignored while planned segment is clear: 0.262m angle=-60.7deg
+[preflight_check-3] [INFO] [1792307171.113788191] [preflight_check]: READY
+[preflight_check-3] [INFO] [1792307174.313885088] [preflight_check]: READY
+[px4_region_mission-4] [WARN] [1792307176.023259671] [px4_region_mission]: near obstacle ignored while planned segment is clear: 0.223m angle=-92.8deg
+[preflight_check-3] [INFO] [1792307177.313873419] [preflight_check]: READY
+[px4_region_mission-4] [INFO] [1792307177.473243303] [px4_region_mission]: mission AREA_3 -> TRANSIT_3
+[px4_region_mission-4] [INFO] [1792307177.474300698] [px4_region_mission]: PLAN_REQUEST region_transition; obstacle_points=0; holding
+[px4_region_mission-4] [INFO] [1792307177.522411520] [px4_region_mission]: PLAN_READY waypoints=2
+[px4_region_mission-4] [WARN] [1792307178.073444840] [px4_region_mission]: near obstacle ignored while planned segment is clear: 0.280m angle=33.6deg
+[px4_region_mission-4] [WARN] [1792307180.122869603] [px4_region_mission]: near obstacle ignored while planned segment is clear: 0.230m angle=-5.5deg
+[preflight_check-3] [INFO] [1792307180.513525458] [preflight_check]: READY
+[preflight_check-3] [INFO] [1792307183.513980743] [preflight_check]: READY
+[px4_region_mission-4] [WARN] [1792307183.825334430] [px4_region_mission]: near obstacle ignored while planned segment is clear: 0.261m angle=23.6deg
+[px4_region_mission-4] [INFO] [1792307186.023257826] [px4_region_mission]: mission TRANSIT_3 -> AREA_4
+[px4_region_mission-4] [INFO] [1792307186.024312076] [px4_region_mission]: PLAN_REQUEST region_transition; obstacle_points=0; holding
+[px4_region_mission-4] [INFO] [1792307186.072524778] [px4_region_mission]: PLAN_READY waypoints=2
+[px4_region_mission-4] [WARN] [1792307186.475653228] [px4_region_mission]: near obstacle ignored while planned segment is clear: 0.233m angle=-100.8deg
+[preflight_check-3] [INFO] [1792307186.713812637] [preflight_check]: READY
+[px4_region_mission-4] [WARN] [1792307188.572992350] [px4_region_mission]: near obstacle ignored while planned segment is clear: 0.246m angle=-110.8deg
+[preflight_check-3] [INFO] [1792307189.913825526] [preflight_check]: READY
+[px4_region_mission-4] [WARN] [1792307192.423309213] [px4_region_mission]: near obstacle ignored while planned segment is clear: 0.229m angle=-81.7deg
+[preflight_check-3] [INFO] [1792307193.113658059] [preflight_check]: READY
+[px4_region_mission-4] [INFO] [1792307195.072894632] [px4_region_mission]: mission AREA_4 -> AREA_5
+[px4_region_mission-4] [INFO] [1792307195.074265416] [px4_region_mission]: PLAN_REQUEST region_transition; obstacle_points=0; holding
+[px4_region_mission-4] [INFO] [1792307195.123215213] [px4_region_mission]: PLAN_READY waypoints=2
+[px4_region_mission-4] [WARN] [1792307196.222902363] [px4_region_mission]: near obstacle ignored while planned segment is clear: 0.226m angle=-83.7deg
+[preflight_check-3] [INFO] [1792307196.313527787] [preflight_check]: READY
+[px4_region_mission-4] [WARN] [1792307198.576201964] [px4_region_mission]: near obstacle ignored while planned segment is clear: 0.231m angle=-101.8deg
+[preflight_check-3] [INFO] [1792307199.313864502] [preflight_check]: READY
+[preflight_check-3] [INFO] [1792307202.513613729] [preflight_check]: READY
+[px4_region_mission-4] [INFO] [1792307204.023319706] [px4_region_mission]: mission AREA_5 -> LAND_APPROACH
+[px4_region_mission-4] [INFO] [1792307204.024694370] [px4_region_mission]: PLAN_REQUEST region_transition; obstacle_points=4; holding
+[px4_region_mission-4] [INFO] [1792307204.072556860] [px4_region_mission]: PLAN_READY waypoints=2
+[px4_region_mission-4] [WARN] [1792307204.123060191] [px4_region_mission]: near obstacle ignored while planned segment is clear: 0.302m angle=140.9deg
+[preflight_check-3] [INFO] [1792307205.713620774] [preflight_check]: READY
+[px4_region_mission-4] [WARN] [1792307206.123285294] [px4_region_mission]: near obstacle ignored while planned segment is clear: 0.228m angle=177.0deg
+[preflight_check-3] [INFO] [1792307208.713946400] [preflight_check]: READY
+[px4_region_mission-4] [WARN] [1792307210.472754451] [px4_region_mission]: near obstacle ignored while planned segment is clear: 0.230m angle=179.0deg
+[preflight_check-3] [INFO] [1792307211.713942492] [preflight_check]: READY
+[px4_region_mission-4] [WARN] [1792307213.422709645] [px4_region_mission]: near obstacle ignored while planned segment is clear: 0.232m angle=173.0deg
+[px4_region_mission-4] [INFO] [1792307214.773399030] [px4_region_mission]: mission LAND_APPROACH -> LANDING
+[px4_offboard-1] [INFO] [1792307214.835093156] [px4_offboard]: flight ACTIVE -> LANDING
+[px4_offboard-1] [INFO] [1792307214.901347735] [px4_offboard]: PX4 command=21, result=0 (0=accepted)
+[preflight_check-3] [INFO] [1792307214.913625775] [preflight_check]: READY
+[preflight_check-3] [INFO] [1792307218.113573616] [preflight_check]: READY
+[preflight_check-3] [INFO] [1792307221.113660210] [preflight_check]: READY
+[preflight_check-3] [INFO] [1792307224.313900761] [preflight_check]: READY
+[px4_offboard-1] [INFO] [1792307224.685231777] [px4_offboard]: flight LANDING -> COMPLETE
+[px4_offboard-1] [INFO] [1792307224.685838494] [px4_offboard]: Result: /home/jiaxintang/桌面/bao/logs/flight/px4_hover_20261018_150506_918163.json
+[px4_region_mission-4] [INFO] [1792307224.722235501] [px4_region_mission]: mission LANDING -> COMPLETE
+[preflight_check-3] [INFO] [1792307227.513501383] [preflight_check]: READY
+[preflight_check-3] [INFO] [1792307230.513610008] [preflight_check]: READY
+[preflight_check-3] [INFO] [1792307233.513953674] [preflight_check]: READY
+[preflight_check-3] [INFO] [1792307236.713491838] [preflight_check]: READY
+[preflight_check-3] [INFO] [1792307239.713685422] [preflight_check]: READY
+[preflight_check-3] [INFO] [1792307242.714035378] [preflight_check]: READY
+[preflight_check-3] [INFO] [1792307245.913646816] [preflight_check]: READY
+[preflight_check-3] [INFO] [1792307248.913621159] [preflight_check]: READY
+[preflight_check-3] [INFO] [1792307252.113510548] [preflight_check]: READY
+[preflight_check-3] [INFO] [1792307255.113850703] [preflight_check]: READY
+[preflight_check-3] [INFO] [1792307258.313521925] [preflight_check]: READY
+[preflight_check-3] [INFO] [1792307261.513642108] [preflight_check]: READY
+[preflight_check-3] [INFO] [1792307264.713544888] [preflight_check]: READY
+[preflight_check-3] [INFO] [1792307267.913507877] [preflight_check]: READY
+[preflight_check-3] [INFO] [1792307270.913857415] [preflight_check]: READY
+[preflight_check-3] [INFO] [1792307274.113537400] [preflight_check]: READY
+[preflight_check-3] [INFO] [1792307277.313565622] [preflight_check]: READY
+[preflight_check-3] [INFO] [1792307280.313799295] [preflight_check]: READY
+[preflight_check-3] [INFO] [1792307283.313712360] [preflight_check]: READY
+[preflight_check-3] [INFO] [1792307286.513912803] [preflight_check]: READY
+[preflight_check-3] [INFO] [1792307289.713678366] [preflight_check]: READY
+[preflight_check-3] [INFO] [1792307292.713638841] [preflight_check]: READY
+[preflight_check-3] [INFO] [1792307295.713870804] [preflight_check]: READY
+[preflight_check-3] [INFO] [1792307298.913898966] [preflight_check]: READY
+[preflight_check-3] [INFO] [1792307302.113489722] [preflight_check]: READY
+[preflight_check-3] [INFO] [1792307305.313651960] [preflight_check]: READY
+[preflight_check-3] [INFO] [1792307308.314151352] [preflight_check]: READY
+[preflight_check-3] [INFO] [1792307311.513553088] [preflight_check]: READY
+[preflight_check-3] [INFO] [1792307314.513836336] [preflight_check]: READY
+[preflight_check-3] [INFO] [1792307317.513666014] [preflight_check]: READY
+[preflight_check-3] [INFO] [1792307320.713498473] [preflight_check]: READY
+[preflight_check-3] [INFO] [1792307323.713558449] [preflight_check]: READY
+[preflight_check-3] [INFO] [1792307326.713831665] [preflight_check]: READY
+[preflight_check-3] [INFO] [1792307329.913484210] [preflight_check]: READY
+[preflight_check-3] [INFO] [1792307332.913934653] [preflight_check]: READY
+[preflight_check-3] [INFO] [1792307336.113510395] [preflight_check]: READY
+[preflight_check-3] [INFO] [1792307339.114208076] [preflight_check]: READY
+[preflight_check-3] [INFO] [1792307342.313552783] [preflight_check]: READY
+[preflight_check-3] [INFO] [1792307345.513550428] [preflight_check]: READY
+[preflight_check-3] [INFO] [1792307348.513904573] [preflight_check]: READY
+[preflight_check-3] [INFO] [1792307351.713664268] [preflight_check]: READY
+[preflight_check-3] [INFO] [1792307354.713848065] [preflight_check]: READY
+[preflight_check-3] [INFO] [1792307357.913489323] [preflight_check]: READY
+[preflight_check-3] [INFO] [1792307361.113789527] [preflight_check]: READY
+[preflight_check-3] [INFO] [1792307364.313477990] [preflight_check]: READY
+[preflight_check-3] [INFO] [1792307367.314072405] [preflight_check]: READY
+[preflight_check-3] [INFO] [1792307370.513479267] [preflight_check]: READY
+[preflight_check-3] [INFO] [1792307373.513829953] [preflight_check]: READY

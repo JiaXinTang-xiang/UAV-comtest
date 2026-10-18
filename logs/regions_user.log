@@ -1,0 +1,83 @@
+[INFO] [launch]: All log files can be found below /home/jiaxintang/.ros/log/2026-10-16-18-37-22-709434-jiaxintang-31347
+[INFO] [launch]: Default logging verbosity is set to INFO
+[INFO] [px4_offboard-1]: process started with pid [31375]
+[INFO] [px4_sensor_adapter-2]: process started with pid [31377]
+[INFO] [preflight_check-3]: process started with pid [31379]
+[INFO] [px4_region_mission-4]: process started with pid [31381]
+[px4_offboard-1] [INFO] [1792147043.172617327] [px4_offboard]: Waiting for PX4; hover_test=False; log=/home/jiaxintang/桌面/bao/logs/flight/px4_hover_20261016_183723_133896.csv
+[px4_region_mission-4] [INFO] [1792147043.225305654] [px4_region_mission]: Ready for /uav/mission/start; all region paths have wall clearance
+[preflight_check-3] [INFO] [1792147043.343443892] [preflight_check]: WAITING:pose:missing_or_stale,velocity:missing_or_stale,imu:missing_or_stale,lidar:missing_or_stale,battery:missing_or_stale,flow:missing_or_stale,range:missing_or_stale
+[preflight_check-3] [INFO] [1792147046.519304375] [preflight_check]: WAITING:pose:missing_or_stale,velocity:missing_or_stale,imu:missing_or_stale,lidar:missing_or_stale,battery:missing_or_stale,flow:missing_or_stale,range:missing_or_stale
+[preflight_check-3] [INFO] [1792147049.718904727] [preflight_check]: WAITING:pose:missing_or_stale,velocity:missing_or_stale,imu:missing_or_stale,lidar:missing_or_stale,battery:missing_or_stale,flow:missing_or_stale,range:missing_or_stale
+[preflight_check-3] [INFO] [1792147052.918387373] [preflight_check]: WAITING:pose:missing_or_stale,velocity:missing_or_stale
+[preflight_check-3] [INFO] [1792147055.918792396] [preflight_check]: WAITING:pose:missing_or_stale,velocity:missing_or_stale
+[px4_offboard-1] [INFO] [1792147057.847655512] [px4_offboard]: flight WAITING -> READY
+[preflight_check-3] [INFO] [1792147059.118561061] [preflight_check]: READY
+[preflight_check-3] [INFO] [1792147062.318382454] [preflight_check]: READY
+[preflight_check-3] [INFO] [1792147065.318625872] [preflight_check]: READY
+[preflight_check-3] [INFO] [1792147068.318799940] [preflight_check]: READY
+[preflight_check-3] [INFO] [1792147071.518741073] [preflight_check]: READY
+[preflight_check-3] [INFO] [1792147074.718345509] [preflight_check]: READY
+[preflight_check-3] [INFO] [1792147077.718403875] [preflight_check]: READY
+[preflight_check-3] [INFO] [1792147080.918365265] [preflight_check]: READY
+[preflight_check-3] [INFO] [1792147083.919183404] [preflight_check]: READY
+[preflight_check-3] [INFO] [1792147087.118372647] [preflight_check]: READY
+[preflight_check-3] [INFO] [1792147090.118523823] [preflight_check]: READY
+[preflight_check-3] [INFO] [1792147093.118731046] [preflight_check]: READY
+[preflight_check-3] [INFO] [1792147096.118900031] [preflight_check]: READY
+[px4_region_mission-4] [INFO] [1792147098.690423983] [px4_region_mission]: mission WAITING -> STARTING
+[px4_offboard-1] [INFO] [1792147098.693062908] [px4_offboard]: flight READY -> PRIMING
+[px4_region_mission-4] [INFO] [1792147098.741125513] [px4_region_mission]: mission STARTING -> TAKEOFF
+[preflight_check-3] [INFO] [1792147099.318341301] [preflight_check]: READY
+[px4_offboard-1] [INFO] [1792147100.197197539] [px4_offboard]: flight PRIMING -> SET_MODE
+[px4_offboard-1] [INFO] [1792147100.266229553] [px4_offboard]: PX4 command=176, result=0 (0=accepted)
+[px4_offboard-1] [INFO] [1792147100.297238442] [px4_offboard]: flight SET_MODE -> ARM
+[px4_offboard-1] [INFO] [1792147100.360683646] [px4_offboard]: PX4 command=400, result=0 (0=accepted)
+[px4_offboard-1] [INFO] [1792147100.397231957] [px4_offboard]: flight ARM -> TAKEOFF
+[preflight_check-3] [INFO] [1792147102.318642613] [preflight_check]: READY
+[preflight_check-3] [INFO] [1792147105.518479694] [preflight_check]: READY
+[preflight_check-3] [INFO] [1792147108.518558397] [preflight_check]: READY
+[px4_offboard-1] [ERROR] [1792147109.347212848] [px4_offboard]: Protection: sensor_preflight_lost
+[px4_offboard-1] [INFO] [1792147109.347706825] [px4_offboard]: flight TAKEOFF -> LANDING
+[px4_offboard-1] [INFO] [1792147109.355076769] [px4_offboard]: PX4 command=21, result=0 (0=accepted)
+[preflight_check-3] [INFO] [1792147111.718370138] [preflight_check]: READY
+[preflight_check-3] [INFO] [1792147114.719074144] [preflight_check]: READY
+[preflight_check-3] [INFO] [1792147117.918422990] [preflight_check]: READY
+[px4_offboard-1] [INFO] [1792147119.347168510] [px4_offboard]: flight LANDING -> FAILED
+[px4_offboard-1] [INFO] [1792147119.347755647] [px4_offboard]: Result: /home/jiaxintang/桌面/bao/logs/flight/px4_hover_20261016_183723_133896.json
+[px4_region_mission-4] [INFO] [1792147119.391019765] [px4_region_mission]: mission TAKEOFF -> FAILED
+[preflight_check-3] [INFO] [1792147120.918542600] [preflight_check]: READY
+[preflight_check-3] [INFO] [1792147123.918605236] [preflight_check]: READY
+[preflight_check-3] [INFO] [1792147127.118354178] [preflight_check]: READY
+[preflight_check-3] [INFO] [1792147130.118754772] [preflight_check]: READY
+[preflight_check-3] [INFO] [1792147133.318418521] [preflight_check]: READY
+[preflight_check-3] [INFO] [1792147136.318802085] [preflight_check]: READY
+[preflight_check-3] [INFO] [1792147139.518441499] [preflight_check]: READY
+[preflight_check-3] [INFO] [1792147142.718367801] [preflight_check]: READY
+[preflight_check-3] [INFO] [1792147145.718839659] [preflight_check]: READY
+[preflight_check-3] [INFO] [1792147148.918470794] [preflight_check]: READY
+[preflight_check-3] [INFO] [1792147152.118635548] [preflight_check]: READY
+[preflight_check-3] [INFO] [1792147155.318387050] [preflight_check]: READY
+[preflight_check-3] [INFO] [1792147158.318676903] [preflight_check]: READY
+[preflight_check-3] [INFO] [1792147161.318758167] [preflight_check]: READY
+[preflight_check-3] [INFO] [1792147164.318765407] [preflight_check]: READY
+[preflight_check-3] [INFO] [1792147167.318919033] [preflight_check]: READY
+[preflight_check-3] [INFO] [1792147170.518680512] [preflight_check]: READY
+[preflight_check-3] [INFO] [1792147173.718427972] [preflight_check]: READY
+[preflight_check-3] [INFO] [1792147176.718635422] [preflight_check]: READY
+[preflight_check-3] [INFO] [1792147179.718684925] [preflight_check]: READY
+[preflight_check-3] [INFO] [1792147182.918377369] [preflight_check]: READY
+[preflight_check-3] [INFO] [1792147185.918491161] [preflight_check]: READY
+[preflight_check-3] [INFO] [1792147188.918739845] [preflight_check]: READY
+[preflight_check-3] [INFO] [1792147192.118382420] [preflight_check]: READY
+[preflight_check-3] [INFO] [1792147195.118498831] [preflight_check]: READY
+[preflight_check-3] [INFO] [1792147198.118934942] [preflight_check]: READY
+[preflight_check-3] [INFO] [1792147201.318420174] [preflight_check]: READY
+[preflight_check-3] [INFO] [1792147204.518413655] [preflight_check]: READY
+[preflight_check-3] [INFO] [1792147207.518828920] [preflight_check]: READY
+[preflight_check-3] [INFO] [1792147210.718505268] [preflight_check]: READY
+[preflight_check-3] [INFO] [1792147213.718618826] [preflight_check]: READY
+[preflight_check-3] [INFO] [1792147216.718694751] [preflight_check]: READY
+[preflight_check-3] [INFO] [1792147219.918538728] [preflight_check]: READY
+[preflight_check-3] [INFO] [1792147223.118836375] [preflight_check]: READY
+[preflight_check-3] [INFO] [1792147226.119243335] [preflight_check]: READY

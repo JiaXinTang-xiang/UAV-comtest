@@ -1,0 +1,42 @@
+[0.874s] Invoking command in '/home/jiaxintang/桌面/bao/uav_competition_ws/build/uav_competition': PYTHONPATH=/home/jiaxintang/桌面/bao/uav_competition_ws/build/uav_competition/prefix_override:/usr/lib/python3/dist-packages/colcon_core/task/python/colcon_distutils_commands:/home/jiaxintang/桌面/bao/uav_competition_ws/install/uav_competition/lib/python3.10/site-packages:${PYTHONPATH} /usr/bin/python3 -W ignore:setup.py install is deprecated -W ignore:easy_install command is deprecated setup.py develop --editable --build-directory /home/jiaxintang/桌面/bao/uav_competition_ws/build/uav_competition/build --no-deps symlink_data
+[1.076s] running develop
+[1.220s] running egg_info
+[1.221s] writing uav_competition.egg-info/PKG-INFO
+[1.221s] writing dependency_links to uav_competition.egg-info/dependency_links.txt
+[1.221s] writing entry points to uav_competition.egg-info/entry_points.txt
+[1.221s] writing requirements to uav_competition.egg-info/requires.txt
+[1.221s] writing top-level names to uav_competition.egg-info/top_level.txt
+[1.222s] reading manifest file 'uav_competition.egg-info/SOURCES.txt'
+[1.223s] writing manifest file 'uav_competition.egg-info/SOURCES.txt'
+[1.224s] running build_ext
+[1.224s] Creating /home/jiaxintang/桌面/bao/uav_competition_ws/install/uav_competition/lib/python3.10/site-packages/uav-competition.egg-link (link to .)
+[1.225s] Installing mission_controller script to /home/jiaxintang/桌面/bao/uav_competition_ws/install/uav_competition/lib/uav_competition
+[1.225s] Installing mock_flight script to /home/jiaxintang/桌面/bao/uav_competition_ws/install/uav_competition/lib/uav_competition
+[1.225s] Installing preflight_check script to /home/jiaxintang/桌面/bao/uav_competition_ws/install/uav_competition/lib/uav_competition
+[1.225s] Installing px4_offboard script to /home/jiaxintang/桌面/bao/uav_competition_ws/install/uav_competition/lib/uav_competition
+[1.225s] Installing px4_sensor_adapter script to /home/jiaxintang/桌面/bao/uav_competition_ws/install/uav_competition/lib/uav_competition
+[1.226s] Installing safety_manager script to /home/jiaxintang/桌面/bao/uav_competition_ws/install/uav_competition/lib/uav_competition
+[1.226s] Installing sensor_adapter script to /home/jiaxintang/桌面/bao/uav_competition_ws/install/uav_competition/lib/uav_competition
+[1.226s] 
+[1.226s] Installed /home/jiaxintang/桌面/bao/uav_competition_ws/build/uav_competition
+[1.226s] running symlink_data
+[1.226s] symbolically linking /home/jiaxintang/桌面/bao/uav_competition_ws/build/uav_competition/launch/px4_sensors.launch.py -> /home/jiaxintang/桌面/bao/uav_competition_ws/install/uav_competition/share/uav_competition/launch
+[1.226s] creating /home/jiaxintang/桌面/bao/uav_competition_ws/install/uav_competition/share/uav_competition/models/iris
+[1.227s] symbolically linking /home/jiaxintang/桌面/bao/uav_competition_ws/build/uav_competition/models/iris/iris.sdf -> /home/jiaxintang/桌面/bao/uav_competition_ws/install/uav_competition/share/uav_competition/models/iris
+[1.227s] symbolically linking /home/jiaxintang/桌面/bao/uav_competition_ws/build/uav_competition/models/iris/model.config -> /home/jiaxintang/桌面/bao/uav_competition_ws/install/uav_competition/share/uav_competition/models/iris
+[1.227s] creating /home/jiaxintang/桌面/bao/uav_competition_ws/install/uav_competition/share/uav_competition/models/iris/meshes
+[1.227s] symbolically linking /home/jiaxintang/桌面/bao/uav_competition_ws/build/uav_competition/models/iris/meshes/iris_prop_cw.dae -> /home/jiaxintang/桌面/bao/uav_competition_ws/install/uav_competition/share/uav_competition/models/iris/meshes
+[1.227s] symbolically linking /home/jiaxintang/桌面/bao/uav_competition_ws/build/uav_competition/models/iris/meshes/iris.stl -> /home/jiaxintang/桌面/bao/uav_competition_ws/install/uav_competition/share/uav_competition/models/iris/meshes
+[1.227s] symbolically linking /home/jiaxintang/桌面/bao/uav_competition_ws/build/uav_competition/models/iris/meshes/iris_prop_ccw.dae -> /home/jiaxintang/桌面/bao/uav_competition_ws/install/uav_competition/share/uav_competition/models/iris/meshes
+[1.227s] creating /home/jiaxintang/桌面/bao/uav_competition_ws/install/uav_competition/share/uav_competition/models/training_surface
+[1.227s] symbolically linking /home/jiaxintang/桌面/bao/uav_competition_ws/build/uav_competition/models/training_surface/model.sdf -> /home/jiaxintang/桌面/bao/uav_competition_ws/install/uav_competition/share/uav_competition/models/training_surface
+[1.227s] symbolically linking /home/jiaxintang/桌面/bao/uav_competition_ws/build/uav_competition/models/training_surface/model.config -> /home/jiaxintang/桌面/bao/uav_competition_ws/install/uav_competition/share/uav_competition/models/training_surface
+[1.227s] creating /home/jiaxintang/桌面/bao/uav_competition_ws/install/uav_competition/share/uav_competition/models/training_surface/materials
+[1.227s] creating /home/jiaxintang/桌面/bao/uav_competition_ws/install/uav_competition/share/uav_competition/models/training_surface/materials/scripts
+[1.227s] symbolically linking /home/jiaxintang/桌面/bao/uav_competition_ws/build/uav_competition/models/training_surface/materials/scripts/flow.material -> /home/jiaxintang/桌面/bao/uav_competition_ws/install/uav_competition/share/uav_competition/models/training_surface/materials/scripts
+[1.227s] creating /home/jiaxintang/桌面/bao/uav_competition_ws/install/uav_competition/share/uav_competition/models/training_surface/materials/textures
+[1.227s] symbolically linking /home/jiaxintang/桌面/bao/uav_competition_ws/build/uav_competition/models/training_surface/materials/textures/flow_texture.png -> /home/jiaxintang/桌面/bao/uav_competition_ws/install/uav_competition/share/uav_competition/models/training_surface/materials/textures
+[1.227s] creating /home/jiaxintang/桌面/bao/uav_competition_ws/install/uav_competition/share/uav_competition/models/iris_training
+[1.227s] symbolically linking /home/jiaxintang/桌面/bao/uav_competition_ws/build/uav_competition/models/iris_training/iris.sdf -> /home/jiaxintang/桌面/bao/uav_competition_ws/install/uav_competition/share/uav_competition/models/iris_training
+[1.227s] symbolically linking /home/jiaxintang/桌面/bao/uav_competition_ws/build/uav_competition/models/iris_training/model.config -> /home/jiaxintang/桌面/bao/uav_competition_ws/install/uav_competition/share/uav_competition/models/iris_training
+[1.252s] Invoked command in '/home/jiaxintang/桌面/bao/uav_competition_ws/build/uav_competition' returned '0': PYTHONPATH=/home/jiaxintang/桌面/bao/uav_competition_ws/build/uav_competition/prefix_override:/usr/lib/python3/dist-packages/colcon_core/task/python/colcon_distutils_commands:/home/jiaxintang/桌面/bao/uav_competition_ws/install/uav_competition/lib/python3.10/site-packages:${PYTHONPATH} /usr/bin/python3 -W ignore:setup.py install is deprecated -W ignore:easy_install command is deprecated setup.py develop --editable --build-directory /home/jiaxintang/桌面/bao/uav_competition_ws/build/uav_competition/build --no-deps symlink_data

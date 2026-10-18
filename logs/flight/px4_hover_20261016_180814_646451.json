@@ -1,0 +1,24 @@
+{
+  "state": "COMPLETE",
+  "failure": "",
+  "hover_test": true,
+  "cruise_height_above_start_m": 2.5,
+  "hover_samples": 101,
+  "hover_max_abs_error_m": 0.03770805350164075,
+  "hover_mean_abs_error_m": 0.021910204321138885,
+  "hover_within_tolerance": true,
+  "gazebo_hover_samples": 0,
+  "gazebo_hover_max_abs_error_m": null,
+  "gazebo_hover_within_tolerance": false,
+  "final_map_position": [
+    4.926487307007447,
+    8.902193445712328,
+    -0.38416082611898095
+  ],
+  "armed": false,
+  "latest_command_ack": {
+    "command": 21,
+    "result": 0
+  },
+  "scope": "PX4 telemetry hover check; optical flow/lidar and full route not verified"
+}

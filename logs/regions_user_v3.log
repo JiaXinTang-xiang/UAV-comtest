@@ -1,0 +1,86 @@
+[INFO] [launch]: All log files can be found below /home/jiaxintang/.ros/log/2026-10-16-18-47-37-100841-jiaxintang-38899
+[INFO] [launch]: Default logging verbosity is set to INFO
+[INFO] [px4_offboard-1]: process started with pid [38927]
+[INFO] [px4_sensor_adapter-2]: process started with pid [38929]
+[INFO] [preflight_check-3]: process started with pid [38931]
+[INFO] [px4_region_mission-4]: process started with pid [38933]
+[px4_offboard-1] [INFO] [1792147657.603984178] [px4_offboard]: Waiting for PX4; hover_test=False; log=/home/jiaxintang/桌面/bao/logs/flight/px4_hover_20261016_184737_562363.csv
+[px4_region_mission-4] [INFO] [1792147657.647924738] [px4_region_mission]: Ready for /uav/mission/start; all region paths have wall clearance
+[px4_offboard-1] [WARN] [1792147657.739929652] [px4_offboard]: Sensor report: WAITING:pose:missing_or_stale (valid_age=never,received_age=never),velocity:missing_or_stale (valid_age=never,received_age=never)
+[preflight_check-3] [WARN] [1792147657.764474814] [preflight_check]: WAITING:pose:missing_or_stale (valid_age=never,received_age=never),velocity:missing_or_stale (valid_age=never,received_age=never)
+[px4_offboard-1] [WARN] [1792147657.940318429] [px4_offboard]: Sensor report: WAITING:pose:missing_or_stale (valid_age=never,received_age=never),velocity:missing_or_stale (valid_age=never,received_age=never)
+[px4_offboard-1] [WARN] [1792147658.140360340] [px4_offboard]: Sensor report: WAITING:pose:missing_or_stale (valid_age=never,received_age=never),velocity:missing_or_stale (valid_age=never,received_age=never)
+[px4_offboard-1] [WARN] [1792147658.340174605] [px4_offboard]: Sensor report: WAITING:pose:missing_or_stale (valid_age=never,received_age=never),velocity:missing_or_stale (valid_age=never,received_age=never)
+[px4_offboard-1] [WARN] [1792147658.539744424] [px4_offboard]: Sensor report: WAITING:pose:missing_or_stale (valid_age=never,received_age=never),velocity:missing_or_stale (valid_age=never,received_age=never)
+[px4_offboard-1] [WARN] [1792147658.740503735] [px4_offboard]: Sensor report: WAITING:pose:missing_or_stale (valid_age=never,received_age=never),velocity:missing_or_stale (valid_age=never,received_age=never)
+[px4_offboard-1] [WARN] [1792147658.940305508] [px4_offboard]: Sensor report: WAITING:pose:missing_or_stale (valid_age=never,received_age=never),velocity:missing_or_stale (valid_age=never,received_age=never)
+[px4_offboard-1] [WARN] [1792147659.140168382] [px4_offboard]: Sensor report: WAITING:pose:missing_or_stale (valid_age=never,received_age=never),velocity:missing_or_stale (valid_age=never,received_age=never)
+[px4_offboard-1] [WARN] [1792147659.340207030] [px4_offboard]: Sensor report: WAITING:pose:missing_or_stale (valid_age=never,received_age=never),velocity:missing_or_stale (valid_age=never,received_age=never)
+[px4_offboard-1] [WARN] [1792147659.539926319] [px4_offboard]: Sensor report: WAITING:pose:missing_or_stale (valid_age=never,received_age=never),velocity:missing_or_stale (valid_age=never,received_age=never)
+[px4_offboard-1] [WARN] [1792147659.739878874] [px4_offboard]: Sensor report: WAITING:pose:missing_or_stale (valid_age=never,received_age=never),velocity:missing_or_stale (valid_age=never,received_age=never)
+[px4_offboard-1] [WARN] [1792147659.939506058] [px4_offboard]: Sensor report: WAITING:pose:missing_or_stale (valid_age=never,received_age=never),velocity:missing_or_stale (valid_age=never,received_age=never)
+[px4_offboard-1] [INFO] [1792147660.027913880] [px4_offboard]: flight WAITING -> READY
+[preflight_check-3] [INFO] [1792147660.139231480] [preflight_check]: READY
+[preflight_check-3] [INFO] [1792147663.139557788] [preflight_check]: READY
+[preflight_check-3] [INFO] [1792147666.339210624] [preflight_check]: READY
+[preflight_check-3] [INFO] [1792147669.339324007] [preflight_check]: READY
+[preflight_check-3] [INFO] [1792147672.339573438] [preflight_check]: READY
+[preflight_check-3] [INFO] [1792147675.539219254] [preflight_check]: READY
+[preflight_check-3] [INFO] [1792147678.539509445] [preflight_check]: READY
+[px4_region_mission-4] [INFO] [1792147681.512325799] [px4_region_mission]: mission WAITING -> STARTING
+[px4_offboard-1] [INFO] [1792147681.558343978] [px4_offboard]: flight READY -> PRIMING
+[px4_region_mission-4] [INFO] [1792147681.607909334] [px4_region_mission]: mission STARTING -> TAKEOFF
+[preflight_check-3] [INFO] [1792147681.739544592] [preflight_check]: READY
+[px4_offboard-1] [INFO] [1792147683.077894818] [px4_offboard]: flight PRIMING -> SET_MODE
+[px4_offboard-1] [INFO] [1792147683.142617050] [px4_offboard]: PX4 command=176, result=0 (0=accepted)
+[px4_offboard-1] [INFO] [1792147683.177804562] [px4_offboard]: flight SET_MODE -> ARM
+[px4_offboard-1] [INFO] [1792147683.237120821] [px4_offboard]: PX4 command=400, result=0 (0=accepted)
+[px4_offboard-1] [INFO] [1792147683.278100214] [px4_offboard]: flight ARM -> TAKEOFF
+[preflight_check-3] [INFO] [1792147684.939635315] [preflight_check]: READY
+[preflight_check-3] [INFO] [1792147688.139249865] [preflight_check]: READY
+[preflight_check-3] [INFO] [1792147691.139757925] [preflight_check]: READY
+[preflight_check-3] [INFO] [1792147694.139608808] [preflight_check]: READY
+[px4_offboard-1] [INFO] [1792147694.828254912] [px4_offboard]: flight TAKEOFF -> ACTIVE
+[px4_region_mission-4] [INFO] [1792147694.858679853] [px4_region_mission]: mission TAKEOFF -> AREA_2
+[preflight_check-3] [INFO] [1792147697.339201294] [preflight_check]: READY
+[preflight_check-3] [INFO] [1792147700.339564533] [preflight_check]: READY
+[px4_region_mission-4] [INFO] [1792147702.919859251] [px4_region_mission]: mission AREA_2 -> AREA_3
+[preflight_check-3] [INFO] [1792147703.539232393] [preflight_check]: READY
+[preflight_check-3] [INFO] [1792147706.539598099] [preflight_check]: READY
+[preflight_check-3] [INFO] [1792147709.739215960] [preflight_check]: READY
+[preflight_check-3] [INFO] [1792147712.739619688] [preflight_check]: READY
+[preflight_check-3] [INFO] [1792147715.939749763] [preflight_check]: READY
+[px4_region_mission-4] [INFO] [1792147715.963706762] [px4_region_mission]: mission AREA_3 -> AREA_4
+[preflight_check-3] [INFO] [1792147719.139316504] [preflight_check]: READY
+[preflight_check-3] [INFO] [1792147722.139662759] [preflight_check]: READY
+[preflight_check-3] [INFO] [1792147725.339200166] [preflight_check]: READY
+[preflight_check-3] [INFO] [1792147728.339734880] [preflight_check]: READY
+[preflight_check-3] [INFO] [1792147731.539438123] [preflight_check]: READY
+[preflight_check-3] [INFO] [1792147734.739608159] [preflight_check]: READY
+[preflight_check-3] [INFO] [1792147737.739654021] [preflight_check]: READY
+[preflight_check-3] [INFO] [1792147740.939217382] [preflight_check]: READY
+[preflight_check-3] [INFO] [1792147743.939579595] [preflight_check]: READY
+[px4_region_mission-4] [INFO] [1792147745.758248583] [px4_region_mission]: mission AREA_4 -> AREA_5
+[preflight_check-3] [INFO] [1792147747.139217773] [preflight_check]: READY
+[preflight_check-3] [INFO] [1792147750.139597387] [preflight_check]: READY
+[preflight_check-3] [INFO] [1792147753.339495463] [preflight_check]: READY
+[px4_region_mission-4] [INFO] [1792147755.458440330] [px4_region_mission]: mission AREA_5 -> LAND_APPROACH
+[preflight_check-3] [INFO] [1792147756.539239492] [preflight_check]: READY
+[preflight_check-3] [INFO] [1792147759.539498766] [preflight_check]: READY
+[preflight_check-3] [INFO] [1792147762.739214049] [preflight_check]: READY
+[preflight_check-3] [INFO] [1792147765.739502701] [preflight_check]: READY
+[preflight_check-3] [INFO] [1792147768.739486562] [preflight_check]: READY
+[px4_region_mission-4] [INFO] [1792147768.808188069] [px4_region_mission]: mission LAND_APPROACH -> LANDING
+[px4_offboard-1] [INFO] [1792147768.878226082] [px4_offboard]: flight ACTIVE -> LANDING
+[px4_offboard-1] [INFO] [1792147768.946958004] [px4_offboard]: PX4 command=21, result=0 (0=accepted)
+[preflight_check-3] [INFO] [1792147771.939729051] [preflight_check]: READY
+[preflight_check-3] [INFO] [1792147774.939564364] [preflight_check]: READY
+[preflight_check-3] [INFO] [1792147778.139237198] [preflight_check]: READY
+[px4_offboard-1] [INFO] [1792147779.327857552] [px4_offboard]: flight LANDING -> COMPLETE
+[px4_offboard-1] [INFO] [1792147779.328483819] [px4_offboard]: Result: /home/jiaxintang/桌面/bao/logs/flight/px4_hover_20261016_184737_562363.json
+[px4_region_mission-4] [INFO] [1792147779.358164472] [px4_region_mission]: mission LANDING -> COMPLETE
+[preflight_check-3] [INFO] [1792147781.139657693] [preflight_check]: READY
+[preflight_check-3] [INFO] [1792147784.339430688] [preflight_check]: READY
+[preflight_check-3] [INFO] [1792147787.339303893] [preflight_check]: READY
+[preflight_check-3] [INFO] [1792147790.539208468] [preflight_check]: READY
+[preflight_check-3] [INFO] [1792147793.739233327] [preflight_check]: READY

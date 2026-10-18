@@ -1,0 +1,122 @@
+[0.119s] DEBUG:colcon:Command line arguments: ['/usr/bin/colcon', '--log-base', '/tmp/px4_msgs_ws.wAxOsP/log', 'build', '--merge-install', '--base-paths', '/tmp/px4_msgs_ws.wAxOsP/src', '--build-base', '/tmp/px4_msgs_ws.wAxOsP/build', '--install-base', '/tmp/px4_msgs_ws.wAxOsP/install', '--packages-select', 'px4_msgs']
+[0.119s] DEBUG:colcon:Parsed command line arguments: Namespace(log_base='/tmp/px4_msgs_ws.wAxOsP/log', log_level=None, verb_name='build', build_base='/tmp/px4_msgs_ws.wAxOsP/build', install_base='/tmp/px4_msgs_ws.wAxOsP/install', merge_install=True, symlink_install=False, test_result_base=None, continue_on_error=False, executor='parallel', parallel_workers=16, event_handlers=None, ignore_user_meta=False, metas=['./colcon.meta'], base_paths=['/tmp/px4_msgs_ws.wAxOsP/src'], packages_ignore=None, packages_ignore_regex=None, paths=None, packages_up_to=None, packages_up_to_regex=None, packages_above=None, packages_above_and_dependencies=None, packages_above_depth=None, packages_select_by_dep=None, packages_skip_by_dep=None, packages_skip_up_to=None, packages_select_build_failed=False, packages_skip_build_finished=False, packages_select_test_failures=False, packages_skip_test_passed=False, packages_select=['px4_msgs'], packages_skip=None, packages_select_regex=None, packages_skip_regex=None, packages_start=None, packages_end=None, allow_overriding=[], cmake_args=None, cmake_target=None, cmake_target_skip_unavailable=False, cmake_clean_cache=False, cmake_clean_first=False, cmake_force_configure=False, ament_cmake_args=None, catkin_cmake_args=None, catkin_skip_building_tests=False, verb_parser=<colcon_defaults.argument_parser.defaults.DefaultArgumentsDecorator object at 0x7ab061c5ad70>, verb_extension=<colcon_core.verb.build.BuildVerb object at 0x7ab061d3f940>, main=<bound method BuildVerb.main of <colcon_core.verb.build.BuildVerb object at 0x7ab061d3f940>>)
+[0.321s] Level 1:colcon.colcon_core.package_discovery:discover_packages(colcon_meta) check parameters
+[0.321s] Level 1:colcon.colcon_core.package_discovery:discover_packages(recursive) check parameters
+[0.321s] Level 1:colcon.colcon_core.package_discovery:discover_packages(ignore) check parameters
+[0.321s] Level 1:colcon.colcon_core.package_discovery:discover_packages(path) check parameters
+[0.321s] Level 1:colcon.colcon_core.package_discovery:discover_packages(recursive) discover
+[0.321s] INFO:colcon.colcon_core.package_discovery:Crawling recursively for packages in '/tmp/px4_msgs_ws.wAxOsP/src'
+[0.321s] Level 1:colcon.colcon_core.package_identification:_identify(/tmp/px4_msgs_ws.wAxOsP/src) by extensions ['ignore', 'ignore_ament_install']
+[0.321s] Level 1:colcon.colcon_core.package_identification:_identify(/tmp/px4_msgs_ws.wAxOsP/src) by extension 'ignore'
+[0.321s] Level 1:colcon.colcon_core.package_identification:_identify(/tmp/px4_msgs_ws.wAxOsP/src) by extension 'ignore_ament_install'
+[0.321s] Level 1:colcon.colcon_core.package_identification:_identify(/tmp/px4_msgs_ws.wAxOsP/src) by extensions ['colcon_pkg']
+[0.321s] Level 1:colcon.colcon_core.package_identification:_identify(/tmp/px4_msgs_ws.wAxOsP/src) by extension 'colcon_pkg'
+[0.321s] Level 1:colcon.colcon_core.package_identification:_identify(/tmp/px4_msgs_ws.wAxOsP/src) by extensions ['colcon_meta']
+[0.322s] Level 1:colcon.colcon_core.package_identification:_identify(/tmp/px4_msgs_ws.wAxOsP/src) by extension 'colcon_meta'
+[0.322s] Level 1:colcon.colcon_core.package_identification:_identify(/tmp/px4_msgs_ws.wAxOsP/src) by extensions ['ros']
+[0.322s] Level 1:colcon.colcon_core.package_identification:_identify(/tmp/px4_msgs_ws.wAxOsP/src) by extension 'ros'
+[0.363s] Level 1:colcon.colcon_core.package_identification:_identify(/tmp/px4_msgs_ws.wAxOsP/src) by extensions ['cmake', 'python']
+[0.363s] Level 1:colcon.colcon_core.package_identification:_identify(/tmp/px4_msgs_ws.wAxOsP/src) by extension 'cmake'
+[0.363s] Level 1:colcon.colcon_core.package_identification:_identify(/tmp/px4_msgs_ws.wAxOsP/src) by extension 'python'
+[0.363s] Level 1:colcon.colcon_core.package_identification:_identify(/tmp/px4_msgs_ws.wAxOsP/src) by extensions ['python_setup_py']
+[0.363s] Level 1:colcon.colcon_core.package_identification:_identify(/tmp/px4_msgs_ws.wAxOsP/src) by extension 'python_setup_py'
+[0.363s] Level 1:colcon.colcon_core.package_identification:_identify(/tmp/px4_msgs_ws.wAxOsP/src/px4_msgs) by extensions ['ignore', 'ignore_ament_install']
+[0.364s] Level 1:colcon.colcon_core.package_identification:_identify(/tmp/px4_msgs_ws.wAxOsP/src/px4_msgs) by extension 'ignore'
+[0.364s] Level 1:colcon.colcon_core.package_identification:_identify(/tmp/px4_msgs_ws.wAxOsP/src/px4_msgs) by extension 'ignore_ament_install'
+[0.364s] Level 1:colcon.colcon_core.package_identification:_identify(/tmp/px4_msgs_ws.wAxOsP/src/px4_msgs) by extensions ['colcon_pkg']
+[0.364s] Level 1:colcon.colcon_core.package_identification:_identify(/tmp/px4_msgs_ws.wAxOsP/src/px4_msgs) by extension 'colcon_pkg'
+[0.364s] Level 1:colcon.colcon_core.package_identification:_identify(/tmp/px4_msgs_ws.wAxOsP/src/px4_msgs) by extensions ['colcon_meta']
+[0.364s] Level 1:colcon.colcon_core.package_identification:_identify(/tmp/px4_msgs_ws.wAxOsP/src/px4_msgs) by extension 'colcon_meta'
+[0.364s] Level 1:colcon.colcon_core.package_identification:_identify(/tmp/px4_msgs_ws.wAxOsP/src/px4_msgs) by extensions ['ros']
+[0.364s] Level 1:colcon.colcon_core.package_identification:_identify(/tmp/px4_msgs_ws.wAxOsP/src/px4_msgs) by extension 'ros'
+[0.367s] DEBUG:colcon.colcon_core.package_identification:Package '/tmp/px4_msgs_ws.wAxOsP/src/px4_msgs' with type 'ros.ament_cmake' and name 'px4_msgs'
+[0.367s] Level 1:colcon.colcon_core.package_discovery:discover_packages(recursive) using defaults
+[0.388s] Level 1:colcon.colcon_core.package_discovery:discover_packages(prefix_path) check parameters
+[0.388s] Level 1:colcon.colcon_core.package_discovery:discover_packages(prefix_path) discover
+[0.392s] DEBUG:colcon.colcon_installed_package_information.package_discovery:Found 454 installed packages in /opt/ros/humble
+[0.394s] Level 1:colcon.colcon_core.package_discovery:discover_packages(prefix_path) using defaults
+[0.451s] Level 5:colcon.colcon_core.verb:set package 'px4_msgs' build argument 'cmake_args' from command line to 'None'
+[0.451s] Level 5:colcon.colcon_core.verb:set package 'px4_msgs' build argument 'cmake_target' from command line to 'None'
+[0.451s] Level 5:colcon.colcon_core.verb:set package 'px4_msgs' build argument 'cmake_target_skip_unavailable' from command line to 'False'
+[0.451s] Level 5:colcon.colcon_core.verb:set package 'px4_msgs' build argument 'cmake_clean_cache' from command line to 'False'
+[0.451s] Level 5:colcon.colcon_core.verb:set package 'px4_msgs' build argument 'cmake_clean_first' from command line to 'False'
+[0.451s] Level 5:colcon.colcon_core.verb:set package 'px4_msgs' build argument 'cmake_force_configure' from command line to 'False'
+[0.451s] Level 5:colcon.colcon_core.verb:set package 'px4_msgs' build argument 'ament_cmake_args' from command line to 'None'
+[0.451s] Level 5:colcon.colcon_core.verb:set package 'px4_msgs' build argument 'catkin_cmake_args' from command line to 'None'
+[0.451s] Level 5:colcon.colcon_core.verb:set package 'px4_msgs' build argument 'catkin_skip_building_tests' from command line to 'False'
+[0.451s] DEBUG:colcon.colcon_core.verb:Building package 'px4_msgs' with the following arguments: {'ament_cmake_args': None, 'build_base': '/tmp/px4_msgs_ws.wAxOsP/build/px4_msgs', 'catkin_cmake_args': None, 'catkin_skip_building_tests': False, 'cmake_args': None, 'cmake_clean_cache': False, 'cmake_clean_first': False, 'cmake_force_configure': False, 'cmake_target': None, 'cmake_target_skip_unavailable': False, 'install_base': '/tmp/px4_msgs_ws.wAxOsP/install', 'merge_install': True, 'path': '/tmp/px4_msgs_ws.wAxOsP/src/px4_msgs', 'symlink_install': False, 'test_result_base': None}
+[0.451s] INFO:colcon.colcon_core.executor:Executing jobs using 'parallel' executor
+[0.452s] DEBUG:colcon.colcon_parallel_executor.executor.parallel:run_until_complete
+[0.452s] INFO:colcon.colcon_ros.task.ament_cmake.build:Building ROS package in '/tmp/px4_msgs_ws.wAxOsP/src/px4_msgs' with build type 'ament_cmake'
+[0.452s] INFO:colcon.colcon_cmake.task.cmake.build:Building CMake package in '/tmp/px4_msgs_ws.wAxOsP/src/px4_msgs'
+[0.455s] INFO:colcon.colcon_core.plugin_system:Skipping extension 'colcon_core.shell.bat': Not used on non-Windows systems
+[0.455s] INFO:colcon.colcon_core.shell:Skip shell extension 'powershell' for command environment: Not usable outside of PowerShell
+[0.455s] DEBUG:colcon.colcon_core.shell:Skip shell extension 'dsv' for command environment
+[0.463s] DEBUG:colcon.colcon_core.event_handler.log_command:Invoking command in '/tmp/px4_msgs_ws.wAxOsP/build/px4_msgs': CMAKE_PREFIX_PATH=/opt/ros/humble /usr/bin/cmake /tmp/px4_msgs_ws.wAxOsP/src/px4_msgs -DCMAKE_INSTALL_PREFIX=/tmp/px4_msgs_ws.wAxOsP/install
+[3.066s] DEBUG:colcon.colcon_core.event_handler.log_command:Invoked command in '/tmp/px4_msgs_ws.wAxOsP/build/px4_msgs' returned '0': CMAKE_PREFIX_PATH=/opt/ros/humble /usr/bin/cmake /tmp/px4_msgs_ws.wAxOsP/src/px4_msgs -DCMAKE_INSTALL_PREFIX=/tmp/px4_msgs_ws.wAxOsP/install
+[3.068s] DEBUG:colcon.colcon_core.event_handler.log_command:Invoking command in '/tmp/px4_msgs_ws.wAxOsP/build/px4_msgs': CMAKE_PREFIX_PATH=/opt/ros/humble /usr/bin/cmake --build /tmp/px4_msgs_ws.wAxOsP/build/px4_msgs -- -j16 -l16
+[127.090s] DEBUG:colcon.colcon_core.event_handler.log_command:Invoked command in '/tmp/px4_msgs_ws.wAxOsP/build/px4_msgs' returned '0': CMAKE_PREFIX_PATH=/opt/ros/humble /usr/bin/cmake --build /tmp/px4_msgs_ws.wAxOsP/build/px4_msgs -- -j16 -l16
+[127.099s] DEBUG:colcon.colcon_core.event_handler.log_command:Invoking command in '/tmp/px4_msgs_ws.wAxOsP/build/px4_msgs': CMAKE_PREFIX_PATH=/opt/ros/humble /usr/bin/cmake --install /tmp/px4_msgs_ws.wAxOsP/build/px4_msgs
+[127.878s] Level 1:colcon.colcon_core.environment:create_environment_scripts_only(px4_msgs)
+[127.878s] DEBUG:colcon.colcon_core.event_handler.log_command:Invoked command in '/tmp/px4_msgs_ws.wAxOsP/build/px4_msgs' returned '0': CMAKE_PREFIX_PATH=/opt/ros/humble /usr/bin/cmake --install /tmp/px4_msgs_ws.wAxOsP/build/px4_msgs
+[127.880s] Level 1:colcon.colcon_core.environment:checking '/tmp/px4_msgs_ws.wAxOsP/install' for CMake module files
+[127.881s] Level 1:colcon.colcon_core.environment:checking '/tmp/px4_msgs_ws.wAxOsP/install' for CMake config files
+[127.881s] Level 1:colcon.colcon_core.shell:create_environment_hook('px4_msgs', 'cmake_prefix_path')
+[127.882s] INFO:colcon.colcon_core.shell:Creating environment hook '/tmp/px4_msgs_ws.wAxOsP/install/share/px4_msgs/hook/cmake_prefix_path.ps1'
+[127.882s] INFO:colcon.colcon_core.shell:Creating environment descriptor '/tmp/px4_msgs_ws.wAxOsP/install/share/px4_msgs/hook/cmake_prefix_path.dsv'
+[127.882s] INFO:colcon.colcon_core.shell:Creating environment hook '/tmp/px4_msgs_ws.wAxOsP/install/share/px4_msgs/hook/cmake_prefix_path.sh'
+[127.884s] Level 1:colcon.colcon_core.environment:checking '/tmp/px4_msgs_ws.wAxOsP/install/lib'
+[127.884s] Level 1:colcon.colcon_core.shell:create_environment_hook('px4_msgs', 'ld_library_path_lib')
+[127.884s] INFO:colcon.colcon_core.shell:Creating environment hook '/tmp/px4_msgs_ws.wAxOsP/install/share/px4_msgs/hook/ld_library_path_lib.ps1'
+[127.884s] INFO:colcon.colcon_core.shell:Creating environment descriptor '/tmp/px4_msgs_ws.wAxOsP/install/share/px4_msgs/hook/ld_library_path_lib.dsv'
+[127.884s] INFO:colcon.colcon_core.shell:Creating environment hook '/tmp/px4_msgs_ws.wAxOsP/install/share/px4_msgs/hook/ld_library_path_lib.sh'
+[127.885s] Level 1:colcon.colcon_core.environment:checking '/tmp/px4_msgs_ws.wAxOsP/install/bin'
+[127.885s] Level 1:colcon.colcon_core.environment:checking '/tmp/px4_msgs_ws.wAxOsP/install/lib/pkgconfig/px4_msgs.pc'
+[127.885s] Level 1:colcon.colcon_core.environment:checking '/tmp/px4_msgs_ws.wAxOsP/install/lib/python3.10/site-packages'
+[127.885s] Level 1:colcon.colcon_core.environment:checking '/tmp/px4_msgs_ws.wAxOsP/install/bin'
+[127.885s] INFO:colcon.colcon_core.shell:Creating package script '/tmp/px4_msgs_ws.wAxOsP/install/share/px4_msgs/package.ps1'
+[127.886s] INFO:colcon.colcon_core.shell:Creating package descriptor '/tmp/px4_msgs_ws.wAxOsP/install/share/px4_msgs/package.dsv'
+[127.887s] INFO:colcon.colcon_core.shell:Creating package script '/tmp/px4_msgs_ws.wAxOsP/install/share/px4_msgs/package.sh'
+[127.887s] INFO:colcon.colcon_core.shell:Creating package script '/tmp/px4_msgs_ws.wAxOsP/install/share/px4_msgs/package.bash'
+[127.888s] INFO:colcon.colcon_core.shell:Creating package script '/tmp/px4_msgs_ws.wAxOsP/install/share/px4_msgs/package.zsh'
+[127.888s] Level 1:colcon.colcon_core.environment:create_file_with_runtime_dependencies(/tmp/px4_msgs_ws.wAxOsP/install/share/colcon-core/packages/px4_msgs)
+[127.888s] Level 1:colcon.colcon_core.environment:create_environment_scripts_only(px4_msgs)
+[127.889s] Level 1:colcon.colcon_core.environment:checking '/tmp/px4_msgs_ws.wAxOsP/install' for CMake module files
+[127.889s] Level 1:colcon.colcon_core.environment:checking '/tmp/px4_msgs_ws.wAxOsP/install' for CMake config files
+[127.889s] Level 1:colcon.colcon_core.shell:create_environment_hook('px4_msgs', 'cmake_prefix_path')
+[127.889s] INFO:colcon.colcon_core.shell:Creating environment hook '/tmp/px4_msgs_ws.wAxOsP/install/share/px4_msgs/hook/cmake_prefix_path.ps1'
+[127.890s] INFO:colcon.colcon_core.shell:Creating environment descriptor '/tmp/px4_msgs_ws.wAxOsP/install/share/px4_msgs/hook/cmake_prefix_path.dsv'
+[127.890s] INFO:colcon.colcon_core.shell:Creating environment hook '/tmp/px4_msgs_ws.wAxOsP/install/share/px4_msgs/hook/cmake_prefix_path.sh'
+[127.890s] Level 1:colcon.colcon_core.environment:checking '/tmp/px4_msgs_ws.wAxOsP/install/lib'
+[127.890s] Level 1:colcon.colcon_core.shell:create_environment_hook('px4_msgs', 'ld_library_path_lib')
+[127.890s] INFO:colcon.colcon_core.shell:Creating environment hook '/tmp/px4_msgs_ws.wAxOsP/install/share/px4_msgs/hook/ld_library_path_lib.ps1'
+[127.891s] INFO:colcon.colcon_core.shell:Creating environment descriptor '/tmp/px4_msgs_ws.wAxOsP/install/share/px4_msgs/hook/ld_library_path_lib.dsv'
+[127.891s] INFO:colcon.colcon_core.shell:Creating environment hook '/tmp/px4_msgs_ws.wAxOsP/install/share/px4_msgs/hook/ld_library_path_lib.sh'
+[127.891s] Level 1:colcon.colcon_core.environment:checking '/tmp/px4_msgs_ws.wAxOsP/install/bin'
+[127.891s] Level 1:colcon.colcon_core.environment:checking '/tmp/px4_msgs_ws.wAxOsP/install/lib/pkgconfig/px4_msgs.pc'
+[127.891s] Level 1:colcon.colcon_core.environment:checking '/tmp/px4_msgs_ws.wAxOsP/install/lib/python3.10/site-packages'
+[127.892s] Level 1:colcon.colcon_core.environment:checking '/tmp/px4_msgs_ws.wAxOsP/install/bin'
+[127.892s] INFO:colcon.colcon_core.shell:Creating package script '/tmp/px4_msgs_ws.wAxOsP/install/share/px4_msgs/package.ps1'
+[127.892s] INFO:colcon.colcon_core.shell:Creating package descriptor '/tmp/px4_msgs_ws.wAxOsP/install/share/px4_msgs/package.dsv'
+[127.893s] INFO:colcon.colcon_core.shell:Creating package script '/tmp/px4_msgs_ws.wAxOsP/install/share/px4_msgs/package.sh'
+[127.893s] INFO:colcon.colcon_core.shell:Creating package script '/tmp/px4_msgs_ws.wAxOsP/install/share/px4_msgs/package.bash'
+[127.893s] INFO:colcon.colcon_core.shell:Creating package script '/tmp/px4_msgs_ws.wAxOsP/install/share/px4_msgs/package.zsh'
+[127.893s] Level 1:colcon.colcon_core.environment:create_file_with_runtime_dependencies(/tmp/px4_msgs_ws.wAxOsP/install/share/colcon-core/packages/px4_msgs)
+[127.894s] DEBUG:colcon.colcon_parallel_executor.executor.parallel:closing loop
+[127.894s] DEBUG:colcon.colcon_parallel_executor.executor.parallel:loop closed
+[127.894s] DEBUG:colcon.colcon_parallel_executor.executor.parallel:run_until_complete finished with '0'
+[127.894s] DEBUG:colcon.colcon_core.event_reactor:joining thread
+[127.898s] INFO:colcon.colcon_core.plugin_system:Skipping extension 'colcon_notification.desktop_notification.terminal_notifier': Not used on non-Darwin systems
+[127.898s] INFO:colcon.colcon_core.plugin_system:Skipping extension 'colcon_notification.desktop_notification.win32': Not used on non-Windows systems
+[127.898s] INFO:colcon.colcon_notification.desktop_notification:Sending desktop notification using 'notify2'
+[127.910s] DEBUG:colcon.colcon_core.event_reactor:joined thread
+[127.910s] INFO:colcon.colcon_core.shell:Creating prefix script '/tmp/px4_msgs_ws.wAxOsP/install/local_setup.ps1'
+[127.911s] INFO:colcon.colcon_core.shell:Creating prefix util module '/tmp/px4_msgs_ws.wAxOsP/install/_local_setup_util_ps1.py'
+[127.912s] INFO:colcon.colcon_core.shell:Creating prefix chain script '/tmp/px4_msgs_ws.wAxOsP/install/setup.ps1'
+[127.913s] INFO:colcon.colcon_core.shell:Creating prefix script '/tmp/px4_msgs_ws.wAxOsP/install/local_setup.sh'
+[127.913s] INFO:colcon.colcon_core.shell:Creating prefix util module '/tmp/px4_msgs_ws.wAxOsP/install/_local_setup_util_sh.py'
+[127.913s] INFO:colcon.colcon_core.shell:Creating prefix chain script '/tmp/px4_msgs_ws.wAxOsP/install/setup.sh'
+[127.914s] INFO:colcon.colcon_core.shell:Creating prefix script '/tmp/px4_msgs_ws.wAxOsP/install/local_setup.bash'
+[127.914s] INFO:colcon.colcon_core.shell:Creating prefix chain script '/tmp/px4_msgs_ws.wAxOsP/install/setup.bash'
+[127.915s] INFO:colcon.colcon_core.shell:Creating prefix script '/tmp/px4_msgs_ws.wAxOsP/install/local_setup.zsh'
+[127.915s] INFO:colcon.colcon_core.shell:Creating prefix chain script '/tmp/px4_msgs_ws.wAxOsP/install/setup.zsh'

@@ -1,0 +1,1 @@
+/home/jiaxintang/桌面/bao/uav_competition_ws/build/uav_competition/launch/px4_regions.launch.py

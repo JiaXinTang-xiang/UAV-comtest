@@ -1,0 +1,24 @@
+{
+  "state": "COMPLETE",
+  "failure": "",
+  "hover_test": false,
+  "cruise_height_above_start_m": 2.5,
+  "hover_samples": 0,
+  "hover_max_abs_error_m": null,
+  "hover_mean_abs_error_m": null,
+  "hover_within_tolerance": false,
+  "gazebo_hover_samples": 0,
+  "gazebo_hover_max_abs_error_m": null,
+  "gazebo_hover_within_tolerance": null,
+  "final_map_position": [
+    7.024033598601818,
+    1.0554405488073826,
+    0.012450248003005981
+  ],
+  "armed": false,
+  "latest_command_ack": {
+    "command": 21,
+    "result": 0
+  },
+  "scope": "PX4 telemetry; independent Gazebo height when available; sensor preflight required=True"
+}

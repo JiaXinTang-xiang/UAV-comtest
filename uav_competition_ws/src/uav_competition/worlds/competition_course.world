@@ -12,6 +12,8 @@
     </gui>
     <include><uri>model://sun</uri></include>
     <include><uri>model://ground_plane</uri></include>
+    <!-- Visual texture for image optical flow. No collision geometry. -->
+    <include><uri>model://training_surface</uri><pose>5 5 0.025 0 0 0</pose></include>
     <model name="course_floor"><static>true</static><pose>5 5 -0.03 0 0 0</pose><link name="link"><collision name="collision"><geometry><box><size>10 10 .05</size></box></geometry></collision><visual name="visual"><geometry><box><size>10 10 .05</size></box></geometry><material><ambient>.78 .78 .74 1</ambient><diffuse>.78 .78 .74 1</diffuse></material></visual></link></model>
     <!-- The +y overview mirrors screen x, so world x = 10 - map x. -->
     <model name="region_5_floor"><static>true</static><pose>5 1 0.006 0 0 0</pose><link name="link"><visual name="visual"><geometry><box><size>9.7 1.9 0.012</size></box></geometry><material><ambient>0.96 0.92 0.72 1</ambient><diffuse>0.96 0.92 0.72 1</diffuse></material></visual></link></model>

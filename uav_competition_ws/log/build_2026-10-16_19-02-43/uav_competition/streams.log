@@ -1,0 +1,24 @@
+[0.837s] Invoking command in '/home/jiaxintang/桌面/bao/uav_competition_ws/build/uav_competition': PYTHONPATH=/home/jiaxintang/桌面/bao/uav_competition_ws/build/uav_competition/prefix_override:/usr/lib/python3/dist-packages/colcon_core/task/python/colcon_distutils_commands:/home/jiaxintang/桌面/bao/uav_competition_ws/install/uav_competition/lib/python3.10/site-packages:${PYTHONPATH} /usr/bin/python3 -W ignore:setup.py install is deprecated -W ignore:easy_install command is deprecated setup.py develop --editable --build-directory /home/jiaxintang/桌面/bao/uav_competition_ws/build/uav_competition/build --no-deps symlink_data
+[1.050s] running develop
+[1.205s] running egg_info
+[1.206s] writing uav_competition.egg-info/PKG-INFO
+[1.206s] writing dependency_links to uav_competition.egg-info/dependency_links.txt
+[1.206s] writing entry points to uav_competition.egg-info/entry_points.txt
+[1.206s] writing requirements to uav_competition.egg-info/requires.txt
+[1.206s] writing top-level names to uav_competition.egg-info/top_level.txt
+[1.208s] reading manifest file 'uav_competition.egg-info/SOURCES.txt'
+[1.208s] writing manifest file 'uav_competition.egg-info/SOURCES.txt'
+[1.209s] running build_ext
+[1.210s] Creating /home/jiaxintang/桌面/bao/uav_competition_ws/install/uav_competition/lib/python3.10/site-packages/uav-competition.egg-link (link to .)
+[1.211s] Installing mission_controller script to /home/jiaxintang/桌面/bao/uav_competition_ws/install/uav_competition/lib/uav_competition
+[1.211s] Installing mock_flight script to /home/jiaxintang/桌面/bao/uav_competition_ws/install/uav_competition/lib/uav_competition
+[1.211s] Installing preflight_check script to /home/jiaxintang/桌面/bao/uav_competition_ws/install/uav_competition/lib/uav_competition
+[1.211s] Installing px4_offboard script to /home/jiaxintang/桌面/bao/uav_competition_ws/install/uav_competition/lib/uav_competition
+[1.211s] Installing px4_region_mission script to /home/jiaxintang/桌面/bao/uav_competition_ws/install/uav_competition/lib/uav_competition
+[1.211s] Installing px4_sensor_adapter script to /home/jiaxintang/桌面/bao/uav_competition_ws/install/uav_competition/lib/uav_competition
+[1.211s] Installing safety_manager script to /home/jiaxintang/桌面/bao/uav_competition_ws/install/uav_competition/lib/uav_competition
+[1.211s] Installing sensor_adapter script to /home/jiaxintang/桌面/bao/uav_competition_ws/install/uav_competition/lib/uav_competition
+[1.211s] 
+[1.212s] Installed /home/jiaxintang/桌面/bao/uav_competition_ws/build/uav_competition
+[1.212s] running symlink_data
+[1.240s] Invoked command in '/home/jiaxintang/桌面/bao/uav_competition_ws/build/uav_competition' returned '0': PYTHONPATH=/home/jiaxintang/桌面/bao/uav_competition_ws/build/uav_competition/prefix_override:/usr/lib/python3/dist-packages/colcon_core/task/python/colcon_distutils_commands:/home/jiaxintang/桌面/bao/uav_competition_ws/install/uav_competition/lib/python3.10/site-packages:${PYTHONPATH} /usr/bin/python3 -W ignore:setup.py install is deprecated -W ignore:easy_install command is deprecated setup.py develop --editable --build-directory /home/jiaxintang/桌面/bao/uav_competition_ws/build/uav_competition/build --no-deps symlink_data
