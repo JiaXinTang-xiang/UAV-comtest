@@ -21,6 +21,12 @@ sleep 1
 # Lockstep can block a polite shutdown while its simulator is gone.
 pkill -9 -x px4 2>/dev/null || true
 pkill -9 -x gzserver 2>/dev/null || true
+for _ in $(seq 1 20); do
+  if ! pgrep -x gzserver >/dev/null && ! pgrep -x px4 >/dev/null; then
+    break
+  fi
+  sleep 0.1
+done
 
 source /opt/ros/humble/setup.bash
 set -u
@@ -46,7 +52,10 @@ export GAZEBO_MODEL_DATABASE_URI="http://127.0.0.1:9"
 export GAZEBO_MASTER_URI="http://127.0.0.1:11345"
 # Keep Gazebo transport on the local loopback interface.  Using the active
 # LAN address can make gzclient receive malformed/empty transport packets and
-# appear frozen while gzserver and PX4 continue running.
+# appear frozen while gzserver and PX4 continue running.  Gazebo Classic reads
+# GAZEBO_IP for its publicized address; GZ_IP is the new-Gazebo spelling and is
+# ignored here, so set both.
+export GAZEBO_IP="127.0.0.1"
 export GZ_IP="127.0.0.1"
 
 # All models used by this exercise are installed locally.
@@ -69,7 +78,6 @@ source "$PX4_ROOT/Tools/simulation/gazebo-classic/setup_gazebo.bash" "$PX4_ROOT"
 set -u
 RUN_DIR="$ROOT/logs/simulation"
 mkdir -p "$RUN_DIR"
-EXPANDED_MODEL=$(mktemp --suffix=.sdf)
 SERVER_PID=""
 GUI_PID=""
 PX4_PID=""
@@ -77,26 +85,29 @@ cleanup() {
   for child in "$PX4_PID" "$GUI_PID" "$SERVER_PID"; do
     if [ -n "$child" ]; then kill "$child" 2>/dev/null || true; fi
   done
-  rm -f "$EXPANDED_MODEL"
 }
 trap cleanup EXIT
 trap 'exit 130' INT TERM
-# Expand includes before spawning; use the actual world name explicitly.
-gz sdf -p "$ROOT/uav_competition_ws/src/uav_competition/models/iris/iris.sdf" > "$EXPANDED_MODEL"
-WORLD_NAME=$(python3 -c 'import sys,xml.etree.ElementTree as E; print(E.parse(sys.argv[1]).getroot().find("world").get("name"))' "$WORLD")
-gzserver --verbose "$WORLD" -s libgazebo_ros_init.so -s libgazebo_ros_factory.so > "$RUN_DIR/gzserver.log" 2>&1 &
+stdbuf -oL -eL gzserver --verbose "$WORLD" -s libgazebo_ros_init.so -s libgazebo_ros_factory.so > "$RUN_DIR/gzserver.log" 2>&1 &
 SERVER_PID=$!
-spawned=0
-for attempt in $(seq 1 12); do
+# Iris is part of the world file. Wait for its MAVLink plugin to open TCP 4560;
+# this proves the world, vehicle and PX4 Gazebo plugins all loaded correctly.
+echo "Waiting for Gazebo world and Iris MAVLink interface..."
+IRIS_READY=0
+for i in $(seq 1 90); do
   kill -0 "$SERVER_PID" || { cat "$RUN_DIR/gzserver.log"; exit 1; }
-  if timeout 8s gz model -w "$WORLD_NAME" --spawn-file="$EXPANDED_MODEL" -m iris \
-      -x "$PX4_SITL_X" -y "$PX4_SITL_Y" -z "$PX4_SITL_Z" > "$RUN_DIR/spawn.log" 2>&1; then
-    spawned=1
+  if ss -tln 2>/dev/null | grep -q ':4560 '; then
+    IRIS_READY=1
     break
   fi
   sleep 1
 done
-if [ "$spawned" != 1 ]; then cat "$RUN_DIR/spawn.log"; echo 'Iris spawn timed out' >&2; exit 1; fi
+if [ "$IRIS_READY" != 1 ]; then
+  echo 'Gazebo loaded, but the Iris MAVLink interface did not open TCP 4560' >&2
+  cat "$RUN_DIR/gzserver.log"
+  exit 1
+fi
+echo 'Gazebo world and Iris are ready; MAVLink TCP 4560 is up.'
 if [ "${HEADLESS:-0}" != 1 ]; then
   # Start the GUI in a separate process group. Gazebo Classic can keep the
   # client alive while it is still initializing its Qt/OpenGL window.
@@ -106,9 +117,10 @@ if [ "${HEADLESS:-0}" != 1 ]; then
     GAZEBO_MODEL_DATABASE_URI="$GAZEBO_MODEL_DATABASE_URI" \
     GAZEBO_MODEL_PATH="$GAZEBO_MODEL_PATH" \
     GAZEBO_RESOURCE_PATH="$GAZEBO_RESOURCE_PATH" \
+    GAZEBO_IP="$GAZEBO_IP" \
     GZ_IP="$GZ_IP" \
     QT_X11_NO_MITSHM=1 \
-    gzclient --verbose > "$RUN_DIR/gzclient.log" 2>&1 &
+    stdbuf -oL -eL gzclient --verbose > "$RUN_DIR/gzclient.log" 2>&1 &
   GUI_PID=$!
   # Give the client a short initialization window, but do not make the PX4
   # server depend on GUI startup. The server remains usable if the client

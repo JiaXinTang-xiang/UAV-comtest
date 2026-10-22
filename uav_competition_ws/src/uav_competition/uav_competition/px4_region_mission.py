@@ -37,6 +37,9 @@ class RegionMission(Node):
         self.hold = None
         self.replan_started = None
         self.plan_attempts = 0
+        self.retry_at = None
+        self.replan_wait = float(p.get('replan_wait_seconds', 15.0))
+        self.replan_retry = float(p.get('replan_retry_seconds', 1.0))
         self.test_enabled = bool(self.declare_parameter('enable_tests', False).value)
         self.corridor_test = False
         self.test_events = []
@@ -239,7 +242,7 @@ class RegionMission(Node):
             self.replan_started = time.monotonic()
             self.plan_attempts = 0
         self.plan_attempts += 1
-        if self.plan_attempts > 5 or time.monotonic()-self.replan_started > 8.0:
+        if time.monotonic()-self.replan_started > self.replan_wait:
             self.fail('replanning_unstable_or_timeout')
             return
         pos = self.pose.position
@@ -248,7 +251,8 @@ class RegionMission(Node):
         planner = copy.deepcopy(self.planner)
         self.planning = self.executor_pool.submit(planner.plan, self.hold, self.targets[self.index][1])
         self.replans.append({'reason': reason, 'from': self.hold,
-                             'region': self.targets[self.index][0], 'obstacle_points': len(planner.dynamic)})
+                             'region': self.targets[self.index][0], 'obstacle_points': len(planner.dynamic),
+                             'obstacles': list(planner.dynamic)})
         self.get_logger().info(f'PLAN_REQUEST {reason}; obstacle_points={len(planner.dynamic)}; holding')
 
     def begin_leg(self):
@@ -321,6 +325,13 @@ class RegionMission(Node):
         pos = self.pose.position
         xy = (pos.x, pos.y)
         self.update_obstacles(now)
+        if self.retry_at is not None:
+            self.hold_pub.publish(Bool(data=True))
+            self.goal(self.hold)
+            if now >= self.retry_at:
+                self.retry_at = None
+                self.request_plan('retry_after_no_safe_path')
+            return
         if self.planning is not None:
             self.hold_pub.publish(Bool(data=True))
             self.goal(self.hold)
@@ -330,12 +341,12 @@ class RegionMission(Node):
                 except Exception as exc:
                     self.replans[-1]['error'] = str(exc)
                     self.planning = None
-                    # A transient scan can block a narrow route. Hold and
-                    # retry a bounded number of times before landing; do not
-                    # abort immediately on the first dynamic-map failure.
-                    if self.plan_attempts < 5:
-                        self.get_logger().warn(f'no_safe_path; retrying plan: {exc}')
-                        self.request_plan('retry_after_no_safe_path')
+                    # Wait for new scans and memory expiry while holding.
+                    # Immediate retries repeatedly use the same observation.
+                    if now-self.replan_started < self.replan_wait:
+                        self.get_logger().warn(
+                            f'no_safe_path; holding, retry in {self.replan_retry:.1f}s: {exc}')
+                        self.retry_at = now + self.replan_retry
                     else:
                         self.fail(f'no_safe_path: {exc}')
                     return

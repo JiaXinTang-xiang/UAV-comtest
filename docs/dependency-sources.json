@@ -1,0 +1,165 @@
+{
+  "description": "Vendored source provenance; local Git metadata is excluded from the main repository.",
+  "repositories": [
+    {
+      "path": "PX4-Autopilot",
+      "commit": "1dacb4cdef2d7145754fc788fa8dc482eed74b40",
+      "origin": "https://github.com/PX4/PX4-Autopilot.git"
+    },
+    {
+      "path": "PX4-Autopilot/Tools/simulation/jmavsim/jMAVSim",
+      "commit": "66b764ada522893c05224950aa6268c809f8e48a",
+      "origin": "https://github.com/PX4/jMAVSim.git"
+    },
+    {
+      "path": "PX4-Autopilot/Tools/simulation/jmavsim/jMAVSim/jMAVlib",
+      "commit": "c08380767b21938391bec676a43b36b837af9ba4",
+      "origin": "https://github.com/PX4/jMAVlib.git"
+    },
+    {
+      "path": "PX4-Autopilot/Tools/simulation/flightgear/flightgear_bridge",
+      "commit": "f47ce7b5fbbb3aa43d33d2be1f6cd3746b13d5bf",
+      "origin": "https://github.com/PX4/PX4-FlightGear-Bridge.git"
+    },
+    {
+      "path": "PX4-Autopilot/Tools/simulation/flightgear/flightgear_bridge/models/TF-G1",
+      "commit": "fdb6dd685f55097230c0eb29aa7e9f5b8d0abf1e",
+      "origin": "https://github.com/ThunderFly-aerospace/FlightGear-TF-G1.git"
+    },
+    {
+      "path": "PX4-Autopilot/Tools/simulation/flightgear/flightgear_bridge/models/TF-R1",
+      "commit": "158e429a0110589b1e2adfe868e166271470e144",
+      "origin": "https://github.com/ThunderFly-aerospace/FlightGear-TF-R1.git"
+    },
+    {
+      "path": "PX4-Autopilot/Tools/simulation/flightgear/flightgear_bridge/models/TF-G2",
+      "commit": "99529413531106836f4303c5389928a4fef04b05",
+      "origin": "https://github.com/ThunderFly-aerospace/FlightGear-TF-G2.git"
+    },
+    {
+      "path": "PX4-Autopilot/Tools/simulation/flightgear/flightgear_bridge/models/Rascal",
+      "commit": "cbdb2fc7dd44331da1dcd04a891ed7f8c27b1ef0",
+      "origin": "https://github.com/ThunderFly-aerospace/FlightGear-Rascal.git"
+    },
+    {
+      "path": "PX4-Autopilot/Tools/simulation/jsbsim/jsbsim_bridge",
+      "commit": "68de2cc63ded9a0d6641d45e9eb3ed2b43454cba",
+      "origin": "https://github.com/PX4/px4-jsbsim-bridge.git"
+    },
+    {
+      "path": "PX4-Autopilot/Tools/simulation/jsbsim/jsbsim_bridge/models/ATI-Resolution",
+      "commit": "40571cd808a204f4062128daeb6bb6db8c134c48",
+      "origin": "https://github.com/FGMEMBERS/ATI-Resolution.git"
+    },
+    {
+      "path": "PX4-Autopilot/Tools/simulation/jsbsim/jsbsim_bridge/models/Rascal",
+      "commit": "d0d1db1961549e557885002cf9c3cff40cc27be2",
+      "origin": "https://github.com/Auterion/FlightGear-Rascal.git"
+    },
+    {
+      "path": "PX4-Autopilot/Tools/simulation/gazebo-classic/sitl_gazebo-classic",
+      "commit": "2e3ed9bfb04d8865e59380afa575dd37b0d6c8e0",
+      "origin": "https://github.com/PX4/PX4-SITL_gazebo-classic.git"
+    },
+    {
+      "path": "PX4-Autopilot/Tools/simulation/gazebo-classic/sitl_gazebo-classic/external/OpticalFlow",
+      "commit": "28ef45c1fcb532b2bfd54c16b059c6a545143b2f",
+      "origin": "https://github.com/PX4/OpticalFlow.git"
+    },
+    {
+      "path": "PX4-Autopilot/Tools/simulation/gazebo-classic/sitl_gazebo-classic/external/OpticalFlow/external/klt_feature_tracker",
+      "commit": "9b5b567ae77f93d1ef4d36151529ba2506a46e7a",
+      "origin": "https://github.com/ethz-ait/klt_feature_tracker.git"
+    },
+    {
+      "path": "PX4-Autopilot/platforms/nuttx/NuttX/apps",
+      "commit": "a489381b49835ecba6f3b873b5071d882a18152f",
+      "origin": "https://github.com/PX4/NuttX-apps.git"
+    },
+    {
+      "path": "PX4-Autopilot/platforms/nuttx/NuttX/nuttx",
+      "commit": "de41e7feaeffaec3ce65327e9569e8fdb553ca3d",
+      "origin": "https://github.com/PX4/NuttX.git"
+    },
+    {
+      "path": "PX4-Autopilot/src/modules/uxrce_dds_client/Micro-XRCE-DDS-Client",
+      "commit": "4248559f3b111155c783e524e461ccc83e768103",
+      "origin": "https://github.com/PX4/Micro-XRCE-DDS-Client.git"
+    },
+    {
+      "path": "PX4-Autopilot/src/modules/mavlink/mavlink",
+      "commit": "18955a04c7c7467e00ea42b704addb4a9c12b53a",
+      "origin": "https://github.com/mavlink/mavlink.git"
+    },
+    {
+      "path": "PX4-Autopilot/src/modules/mavlink/mavlink/pymavlink",
+      "commit": "2ca2c13b54b4c75dd71c79acafc7ec40d9cb4965",
+      "origin": "https://github.com/ardupilot/pymavlink.git"
+    },
+    {
+      "path": "PX4-Autopilot/src/drivers/cyphal/public_regulated_data_types",
+      "commit": "d0bd6516dac8ff61287fe49a9f2c75e7d4dc1b8e",
+      "origin": "https://github.com/opencyphal/public_regulated_data_types.git"
+    },
+    {
+      "path": "PX4-Autopilot/src/drivers/cyphal/legacy_data_types",
+      "commit": "36a01e428b110ff84c8babe5b65667b5e3037d5e",
+      "origin": "https://github.com/PX4/public_regulated_data_types.git"
+    },
+    {
+      "path": "PX4-Autopilot/src/drivers/cyphal/libcanard",
+      "commit": "5c69d451ab0787a81dcb615692d707f2a286f5e5",
+      "origin": "https://github.com/opencyphal/libcanard.git"
+    },
+    {
+      "path": "PX4-Autopilot/src/drivers/gps/devices",
+      "commit": "b3ffec3f173a4dcb4d9e604222a30215023e9880",
+      "origin": "https://github.com/PX4/PX4-GPSDrivers.git"
+    },
+    {
+      "path": "PX4-Autopilot/src/drivers/uavcan/libuavcan",
+      "commit": "9a0fd624c448cad5633720676233f74846387a9f",
+      "origin": "https://github.com/dronecan/libuavcan.git"
+    },
+    {
+      "path": "PX4-Autopilot/src/drivers/uavcan/libuavcan/libuavcan/dsdl_compiler/pyuavcan",
+      "commit": "7aed0a9705c7b931eda1cd4491729cdc88cc82bf",
+      "origin": "https://github.com/dronecan/pydronecan"
+    },
+    {
+      "path": "PX4-Autopilot/src/drivers/uavcan/libuavcan/dsdl",
+      "commit": "5d303e1a9eb9bce17bb58a2378c1666d1cef3665",
+      "origin": "https://github.com/dronecan/DSDL"
+    },
+    {
+      "path": "PX4-Autopilot/src/lib/crypto/libtommath",
+      "commit": "fd73d7630b9d3ed5a79d613ff680a549e9780de7",
+      "origin": "https://github.com/PX4/libtommath.git"
+    },
+    {
+      "path": "PX4-Autopilot/src/lib/crypto/monocypher",
+      "commit": "baca5d31259c598540e4d1284bc8d8f793abf83a",
+      "origin": "https://github.com/PX4/Monocypher.git"
+    },
+    {
+      "path": "PX4-Autopilot/src/lib/crypto/libtomcrypt",
+      "commit": "673f5ce29015a9bba3c96792920a10601b5b0718",
+      "origin": "https://github.com/PX4/libtomcrypt.git"
+    },
+    {
+      "path": "PX4-Autopilot/src/lib/events/libevents",
+      "commit": "a9a3fc07abb8bd8eb6fbca64c35b479cab91ff35",
+      "origin": "https://github.com/mavlink/libevents.git"
+    },
+    {
+      "path": "PX4-Autopilot/src/lib/events/libevents/libs/cpp/parse/nlohmann_json",
+      "commit": "bc889afb4c5bf1c0d8ee29ef35eaaf4c8bef8a5d",
+      "origin": "https://github.com/nlohmann/json.git"
+    },
+    {
+      "path": "third_party/Micro-CDR-v2.0.0",
+      "commit": "9a4fda208e955de05632e98a48360aaaa77ef0f8",
+      "origin": ""
+    }
+  ]
+}

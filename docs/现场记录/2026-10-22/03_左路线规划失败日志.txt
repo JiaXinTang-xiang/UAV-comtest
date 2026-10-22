@@ -1,0 +1,94 @@
+jiaxintang@jiaxintang:~/桌面/bao$ cd /home/jiaxintang/桌面/bao
+./scripts/run_px4_regions.sh route:=left 2>&1 | tee logs/left_route_clean.log
+[INFO] [launch]: All log files can be found below /home/jiaxintang/.ros/log/2026-10-22-10-29-52-182703-jiaxintang-76030
+[INFO] [launch]: Default logging verbosity is set to INFO
+[INFO] [px4_offboard-1]: process started with pid [76065]
+[INFO] [px4_sensor_adapter-2]: process started with pid [76067]
+[INFO] [preflight_check-3]: process started with pid [76069]
+[INFO] [px4_region_mission-4]: process started with pid [76071]
+[px4_region_mission-4] [INFO] [1792636192.651414595] [px4_region_mission]: route=left; ready for /uav/mission/start; all paths have clearance
+[px4_offboard-1] [INFO] [1792636192.746486074] [px4_offboard]: Waiting for PX4; hover_test=False; log=/home/jiaxintang/桌面/bao/logs/flight/px4_hover_20261022_102952_706509.csv
+[px4_offboard-1] [WARN] [1792636192.862469813] [px4_offboard]: Sensor report: WAITING:pose:missing_or_stale (valid_age=never,received_age=never),velocity:missing_or_stale (valid_age=never,received_age=never)
+[preflight_check-3] [WARN] [1792636192.895341176] [preflight_check]: WAITING:pose:missing_or_stale (valid_age=never,received_age=never),velocity:missing_or_stale (valid_age=never,received_age=never)
+[px4_offboard-1] [INFO] [1792636195.170935190] [px4_offboard]: flight WAITING -> READY
+[preflight_check-3] [INFO] [1792636195.261961345] [preflight_check]: READY
+[preflight_check-3] [INFO] [1792636198.261943877] [preflight_check]: READY
+[preflight_check-3] [INFO] [1792636201.461783776] [preflight_check]: READY
+[preflight_check-3] [INFO] [1792636204.462067706] [preflight_check]: READY
+[preflight_check-3] [INFO] [1792636207.661838643] [preflight_check]: READY
+[preflight_check-3] [INFO] [1792636210.861828978] [preflight_check]: READY
+[preflight_check-3] [INFO] [1792636213.862104153] [preflight_check]: READY
+[preflight_check-3] [INFO] [1792636217.061834498] [preflight_check]: READY
+[preflight_check-3] [INFO] [1792636220.261891537] [preflight_check]: READY
+[preflight_check-3] [INFO] [1792636223.461772925] [preflight_check]: READY
+[preflight_check-3] [INFO] [1792636226.661839007] [preflight_check]: READY
+[preflight_check-3] [INFO] [1792636229.662045707] [preflight_check]: READY
+[preflight_check-3] [INFO] [1792636232.662055855] [preflight_check]: READY
+[preflight_check-3] [INFO] [1792636235.861831615] [preflight_check]: READY
+[preflight_check-3] [INFO] [1792636239.061817633] [preflight_check]: READY
+[preflight_check-3] [INFO] [1792636242.261829542] [preflight_check]: READY
+[px4_region_mission-4] [INFO] [1792636242.455341759] [px4_region_mission]: mission WAITING -> STARTING
+[px4_offboard-1] [INFO] [1792636242.482853803] [px4_offboard]: flight READY -> PRIMING
+[px4_region_mission-4] [INFO] [1792636242.532322831] [px4_region_mission]: mission STARTING -> TAKEOFF
+[px4_offboard-1] [INFO] [1792636244.021281958] [px4_offboard]: flight PRIMING -> SET_MODE
+[px4_offboard-1] [INFO] [1792636244.085291684] [px4_offboard]: PX4 command=176, result=0 (0=accepted)
+[px4_offboard-1] [INFO] [1792636244.120720398] [px4_offboard]: flight SET_MODE -> ARM
+[px4_offboard-1] [INFO] [1792636244.180478339] [px4_offboard]: PX4 command=400, result=0 (0=accepted)
+[px4_offboard-1] [INFO] [1792636244.221070260] [px4_offboard]: flight ARM -> TAKEOFF
+[preflight_check-3] [INFO] [1792636245.261879904] [preflight_check]: READY
+[preflight_check-3] [INFO] [1792636248.261955592] [preflight_check]: READY
+[preflight_check-3] [INFO] [1792636251.262164824] [preflight_check]: READY
+[preflight_check-3] [INFO] [1792636254.461766409] [preflight_check]: READY
+[px4_offboard-1] [INFO] [1792636255.521062821] [px4_offboard]: flight TAKEOFF -> ACTIVE
+[px4_region_mission-4] [INFO] [1792636255.531988847] [px4_region_mission]: mission TAKEOFF -> TRANSIT_1
+[px4_region_mission-4] [INFO] [1792636255.533637523] [px4_region_mission]: PLAN_REQUEST region_transition; obstacle_points=0; holding
+[px4_region_mission-4] [INFO] [1792636255.584584804] [px4_region_mission]: PLAN_READY waypoints=2
+[px4_region_mission-4] [WARN] [1792636256.332944819] [px4_region_mission]: near obstacle ignored while planned segment is clear: 0.240m angle=19.6deg
+[preflight_check-3] [INFO] [1792636257.462475764] [preflight_check]: READY
+[px4_region_mission-4] [WARN] [1792636258.382525527] [px4_region_mission]: near obstacle ignored while planned segment is clear: 0.318m angle=-42.6deg
+[preflight_check-3] [INFO] [1792636260.662043246] [preflight_check]: READY
+[px4_region_mission-4] [WARN] [1792636262.582570816] [px4_region_mission]: near obstacle ignored while planned segment is clear: 0.226m angle=2.5deg
+[preflight_check-3] [INFO] [1792636263.861926584] [preflight_check]: READY
+[px4_region_mission-4] [WARN] [1792636264.582997828] [px4_region_mission]: near obstacle ignored while planned segment is clear: 0.227m angle=-3.5deg
+[px4_region_mission-4] [INFO] [1792636266.782361910] [px4_region_mission]: mission TRANSIT_1 -> AREA_2
+[px4_region_mission-4] [INFO] [1792636266.783605670] [px4_region_mission]: PLAN_REQUEST region_transition; obstacle_points=3; holding
+[px4_region_mission-4] [INFO] [1792636266.834903875] [px4_region_mission]: PLAN_READY waypoints=2
+[preflight_check-3] [INFO] [1792636266.861778193] [preflight_check]: READY
+[px4_region_mission-4] [WARN] [1792636267.482777189] [px4_region_mission]: near obstacle ignored while planned segment is clear: 0.312m angle=-131.9deg
+[px4_region_mission-4] [WARN] [1792636269.532949932] [px4_region_mission]: near obstacle ignored while planned segment is clear: 0.221m angle=-93.8deg
+[preflight_check-3] [INFO] [1792636269.862259880] [preflight_check]: READY
+[px4_region_mission-4] [WARN] [1792636272.932906418] [px4_region_mission]: near obstacle ignored while planned segment is clear: 0.230m angle=-86.7deg
+[preflight_check-3] [INFO] [1792636273.061745439] [preflight_check]: READY
+[px4_region_mission-4] [WARN] [1792636274.982880542] [px4_region_mission]: near obstacle ignored while planned segment is clear: 0.296m angle=-51.6deg
+[preflight_check-3] [INFO] [1792636276.062184696] [preflight_check]: READY
+[px4_region_mission-4] [INFO] [1792636276.132414631] [px4_region_mission]: mission AREA_2 -> AREA_3
+[px4_region_mission-4] [INFO] [1792636276.133690800] [px4_region_mission]: PLAN_REQUEST region_transition; obstacle_points=0; holding
+[px4_region_mission-4] [INFO] [1792636276.182201803] [px4_region_mission]: PLAN_READY waypoints=2
+[px4_region_mission-4] [WARN] [1792636277.532833944] [px4_region_mission]: near obstacle ignored while planned segment is clear: 0.327m angle=-44.6deg
+[px4_region_mission-4] [INFO] [1792636277.982144233] [px4_region_mission]: PLAN_REQUEST lidar_path_blocked; obstacle_points=0; holding
+[px4_region_mission-4] [WARN] [1792636278.033959450] [px4_region_mission]: no_safe_path; retrying plan: Waypoint lacks 0.35 m wall clearance: (7.575394835323095, 6.8627071138471365) -> (7.5, 5.0)
+[px4_region_mission-4] [INFO] [1792636278.034676854] [px4_region_mission]: PLAN_REQUEST retry_after_no_safe_path; obstacle_points=0; holding
+[px4_region_mission-4] [WARN] [1792636278.081876947] [px4_region_mission]: no_safe_path; retrying plan: Waypoint lacks 0.35 m wall clearance: (7.575805392116308, 6.854685282334685) -> (7.5, 5.0)
+[px4_region_mission-4] [INFO] [1792636278.082522074] [px4_region_mission]: PLAN_REQUEST retry_after_no_safe_path; obstacle_points=0; holding
+[px4_region_mission-4] [WARN] [1792636278.132025155] [px4_region_mission]: no_safe_path; retrying plan: Waypoint lacks 0.35 m wall clearance: (7.57581826671958, 6.845003819093108) -> (7.5, 5.0)
+[px4_region_mission-4] [INFO] [1792636278.132624638] [px4_region_mission]: PLAN_REQUEST retry_after_no_safe_path; obstacle_points=0; holding
+[px4_region_mission-4] [WARN] [1792636278.182402936] [px4_region_mission]: no_safe_path; retrying plan: Waypoint lacks 0.35 m wall clearance: (7.575507130473852, 6.836538529023528) -> (7.5, 5.0)
+[px4_region_mission-4] [INFO] [1792636278.182985742] [px4_region_mission]: PLAN_REQUEST retry_after_no_safe_path; obstacle_points=0; holding
+[px4_region_mission-4] [ERROR] [1792636278.232819720] [px4_region_mission]: no_safe_path: Waypoint lacks 0.35 m wall clearance: (7.575844969600439, 6.828171944245696) -> (7.5, 5.0)
+[px4_region_mission-4] [INFO] [1792636278.233440988] [px4_region_mission]: mission AREA_3 -> ABORTING
+[px4_offboard-1] [INFO] [1792636278.234628305] [px4_offboard]: flight ACTIVE -> LANDING
+[px4_offboard-1] [INFO] [1792636278.288319234] [px4_offboard]: PX4 command=21, result=0 (0=accepted)
+[preflight_check-3] [INFO] [1792636279.062149342] [preflight_check]: READY
+[preflight_check-3] [INFO] [1792636282.262307099] [preflight_check]: READY
+[preflight_check-3] [INFO] [1792636285.262152968] [preflight_check]: READY
+[px4_offboard-1] [INFO] [1792636287.971127938] [px4_offboard]: flight LANDING -> COMPLETE
+[px4_offboard-1] [INFO] [1792636287.971750784] [px4_offboard]: Result: /home/jiaxintang/桌面/bao/logs/flight/px4_hover_20261022_102952_706509.json
+[px4_region_mission-4] [INFO] [1792636287.981769797] [px4_region_mission]: mission ABORTING -> FAILED
+[preflight_check-3] [INFO] [1792636288.461869374] [preflight_check]: READY
+[preflight_check-3] [INFO] [1792636291.462148461] [preflight_check]: READY
+[preflight_check-3] [INFO] [1792636294.462335115] [preflight_check]: READY
+[preflight_check-3] [INFO] [1792636297.661905603] [preflight_check]: READY
+[preflight_check-3] [INFO] [1792636300.861748828] [preflight_check]: READY
+[preflight_check-3] [INFO] [1792636303.861932721] [preflight_check]: READY
+^C^C
+jiaxintang@jiaxintang:~/桌面/bao$ 

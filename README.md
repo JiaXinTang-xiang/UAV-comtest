@@ -2,6 +2,10 @@
 
 工程目录：`/home/jiaxintang/桌面/bao`。使用 PX4 v1.14.3、Gazebo Classic 11、ROS2 Humble、原生 Micro XRCE-DDS 接口。系统库仍在 `/usr`、`/opt/ros`；PX4、Agent、消息包和工程源码在本目录。
 
+**最新功能、左右路线坐标、完整启动命令及成功记录：** [仿真功能与双路线启动说明](docs/仿真功能与双路线启动说明.md)。
+
+**统一仓库与依赖保存方式：** [仓库与依赖管理](docs/仓库与依赖管理.md)。本次截图和终端附件保存在 `docs/现场记录/2026-10-22/`。
+
 ## 正常训练流程
 
 每个命令在独立终端运行并保持打开。先结束旧的悬停或巡航节点；它们共用控制话题，不能同时运行。重新训练一趟前重启仿真和控制节点。
@@ -20,13 +24,13 @@ cd /home/jiaxintang/桌面/bao
 ./scripts/run_px4_competition.sh
 ```
 
-脚本会清理旧的 PX4/Gazebo，先编译，再展开并生成传感器无人机，指定世界名并限制生成等待时间。服务端、模型生成和 GUI 日志在 `logs/simulation/`。GUI 无法操作时先看该目录日志。无人机出生点仍是批准的 `(5,9)`，墙体和起降区位置不变。
+脚本会清理旧的 PX4/Gazebo 并先编译；传感器无人机随世界文件直接加载，等待 MAVLink TCP 4560 就绪后启动 PX4。服务端和 GUI 日志在 `logs/simulation/`。GUI 无法操作时先看该目录日志。无人机初始位置为 `(5,9)`。
 
 **终端 3：传感器和区域巡航节点**
 
 ```bash
 cd /home/jiaxintang/桌面/bao
-./scripts/run_px4_regions.sh
+./scripts/run_px4_regions.sh route:=right
 ```
 
 等待自检报告 `READY`，飞行状态 `WAITING -> READY`。节点不会自动解锁。
@@ -34,8 +38,8 @@ cd /home/jiaxintang/桌面/bao
 **终端 4：开始巡航**
 
 ```bash
-source /opt/ros/humble/setup.bash
-ros2 service call /uav/mission/start std_srvs/srv/Trigger '{}'
+cd /home/jiaxintang/桌面/bao
+./scripts/start_mission_when_ready.sh
 ```
 
 流程：系统自检 → Offboard 心跳预发送 → 切换模式 → 解锁 → 2.5 m 起飞 → 区域 2→3→4→5 → 靶标坐标上方减速对准 → PX4 自动降落 → 确认接地及上锁 → COMPLETE。所有完成判定来自飞控状态；服务返回成功表示请求已受理。

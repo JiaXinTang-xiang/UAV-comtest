@@ -1,6 +1,0 @@
-[0.000000] (-) TimerEvent: {}
-[0.000438] (-) JobUnselected: {'identifier': 'px4_msgs'}
-[0.000582] (uav_competition) JobQueued: {'identifier': 'uav_competition', 'dependencies': OrderedDict([('px4_msgs', '/home/jiaxintang/桌面/bao/install/px4_msgs')])}
-[0.000632] (uav_competition) JobStarted: {'identifier': 'uav_competition'}
-[0.008525] (uav_competition) JobEnded: {'identifier': 'uav_competition', 'rc': 1}
-[0.019067] (-) EventReactorShutdown: {}

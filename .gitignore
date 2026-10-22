@@ -1,0 +1,26 @@
+# Local Git metadata of vendored dependencies; preserve it for PX4 builds.
+**/.git
+
+# Build/install outputs stay on disk, but are not source code.
+**/build/
+**/build_*/
+**/install/
+**/log/
+**/__pycache__/
+*.py[cod]
+*.egg-info/
+.pytest_cache/
+*.ulg
+
+# Live logs and failed training attempts; retain curated successful evidence.
+/logs/*
+!/logs/flight/
+/logs/flight/*
+!/logs/flight/region_20261022_110818.json
+!/logs/flight/px4_hover_20261022_110818_912740.json
+!/logs/flight/px4_hover_20261022_110818_912740.csv
+
+# Downloads and accidental empty shell output files.
+/micro-xrce-dds-agent.tar.gz
+/ABORTING
+/LANDING

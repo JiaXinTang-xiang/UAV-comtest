@@ -1,1 +1,0 @@
-/home/jiaxintang/桌面/bao/uav_competition_ws/build/uav_competition/launch/mission.launch.py

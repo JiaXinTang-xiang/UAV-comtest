@@ -28,14 +28,22 @@ class CoursePlanner:
                     self.boxes.append((pose[0]-sx/2, pose[0]+sx/2, pose[1]-sy/2, pose[1]+sy/2))
         self.dynamic = []
 
-    def free(self, p):
+    def blocked_reason(self, p):
+        """Distinguish physical walls from remembered lidar observations."""
         x, y = p
         if not (self.clearance <= x <= 10-self.clearance and self.clearance <= y <= 10-self.clearance):
-            return False
+            return 'outside planning bounds'
         for x0, x1, y0, y1 in self.boxes:
             if math.hypot(max(x0-x, 0, x-x1), max(y0-y, 0, y-y1)) <= self.clearance:
-                return False
-        return all(math.dist(p, q) > self.clearance for q in self.dynamic)
+                return f'static wall box={(x0, x1, y0, y1)}'
+        for q in self.dynamic:
+            distance = math.dist(p, q)
+            if distance <= self.clearance:
+                return f'lidar observation={q}, distance={distance:.3f}m'
+        return ''
+
+    def free(self, p):
+        return not self.blocked_reason(p)
 
     def visible(self, a, b):
         steps = max(1, math.ceil(math.dist(a, b)/(self.resolution/2)))
@@ -44,8 +52,10 @@ class CoursePlanner:
     def plan(self, start, goal, timeout=2.0):
         deadline = time.monotonic() + timeout
         start, goal = tuple(start), tuple(goal)
-        if not self.free(start) or not self.free(goal):
-            raise ValueError(f'Waypoint lacks {self.clearance} m wall clearance: {start} -> {goal}')
+        for label, point_to_check in (('start', start), ('goal', goal)):
+            reason = self.blocked_reason(point_to_check)
+            if reason:
+                raise ValueError(f'{label}={point_to_check} blocked: {reason}; clearance={self.clearance}m')
         if self.visible(start, goal):
             return [start, goal]
         r = self.resolution

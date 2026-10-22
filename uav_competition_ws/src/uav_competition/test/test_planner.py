@@ -42,3 +42,15 @@ def test_left_outer_passage_rejected_with_current_vehicle_margin():
     planner = CoursePlanner(WORLD, .7)
     with pytest.raises(ValueError):
         planner.plan((7.5, 5), (9.4, 3))
+
+
+def test_area_five_failure_identifies_lidar_instead_of_wall():
+    planner = CoursePlanner(WORLD, .25)
+    start, goal = (9.488497129641473, 3.086943185888231), (9.48, 1.0)
+    assert planner.visible(start, goal)
+    planner.dynamic = [(9.48, 1.1)]
+    with pytest.raises(ValueError, match='goal=.*lidar observation='):
+        planner.plan(start, goal)
+    # Once the transient observation expires, the same course is feasible.
+    planner.dynamic = []
+    assert planner.plan(start, goal) == [start, goal]

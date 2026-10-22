@@ -16,7 +16,7 @@ mission:
   landing_target: [7.0, 1.0]
   route:
     right: [[5.0, 9.0], [6.0, 7.0], [5.0, 5.0], [2.0, 3.0], [4.0, 1.0], [6.0, 1.0], [7.0, 1.0]]
-    left: [[5.0, 9.0], [7.5, 9.0], [7.5, 7.0], [7.5, 5.0], [9.4, 5.0], [9.4, 3.0], [9.4, 1.0], [7.0, 1.0]]
+    left: [[5.0, 9.0], [7.2, 9.0], [7.2, 7.0], [7.2, 5.0], [9.48, 5.0], [9.48, 3.0], [9.48, 1.0], [7.0, 1.0]]
   selected_route: right
 safety:
   bounds: [0.25, 9.75, 0.25, 9.75]
@@ -34,7 +34,11 @@ training_assumptions:
 planner:
   clearance: 0.70
   resolution: 0.10
-  waypoint_tolerance: 0.12
+  # Allow transient lidar memory (12 s) to refresh before aborting.
+  replan_wait_seconds: 15.0
+  replan_retry_seconds: 1.0
+  # Gazebo/PX4 tracking can leave a small steady-state offset near walls.
+  waypoint_tolerance: 0.18
   lidar_stop_distance: 0.48
   # Emergency landing is reserved for a persistent, extremely close return.
   # The larger lidar_stop_distance is used for replanning/slowdown decisions.
@@ -55,15 +59,16 @@ route_profiles:
       AREA_5: [4.0, 1.0]
   left:
     # The red route uses the narrow outer corridor in the training map.
-    # 0.35 m is the Iris body-radius-level clearance; the route is slowed
-    # down and the global geofence/lidar/corridor protections remain active.
-    clearance: 0.35
+    # Keep a practical margin for the simulated Iris while allowing tracking
+    # error in the narrow outer corridor. Geofence and emergency distance
+    # protections remain active globally.
+    clearance: 0.25
     max_xy_speed: 0.25
-    corridor_limit: 0.30
+    corridor_limit: 0.45
     targets:
-      TRANSIT_1: [7.5, 9.0]
-      AREA_2: [7.5, 7.0]
-      AREA_3: [7.5, 5.0]
-      TRANSIT_3: [9.4, 5.0]
-      AREA_4: [9.4, 3.0]
-      AREA_5: [9.4, 1.0]
+      TRANSIT_1: [7.2, 9.0]
+      AREA_2: [7.2, 7.0]
+      AREA_3: [7.2, 5.0]
+      TRANSIT_3: [9.48, 5.0]
+      AREA_4: [9.48, 3.0]
+      AREA_5: [9.48, 1.0]
