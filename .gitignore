@@ -16,9 +16,14 @@
 /logs/*
 !/logs/flight/
 /logs/flight/*
-!/logs/flight/region_20261022_110818.json
-!/logs/flight/px4_hover_20261022_110818_912740.json
-!/logs/flight/px4_hover_20261022_110818_912740.csv
+# 左路线成功
+!/logs/flight/region_20261022_112416.json
+!/logs/flight/px4_hover_20261022_112417_032636.json
+!/logs/flight/px4_hover_20261022_112417_032636.csv
+# 右路线成功
+!/logs/flight/region_20261022_112212.json
+!/logs/flight/px4_hover_20261022_112212_568801.json
+!/logs/flight/px4_hover_20261022_112212_568801.csv
 
 # Downloads and accidental empty shell output files.
 /micro-xrce-dds-agent.tar.gz

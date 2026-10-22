@@ -1,4 +1,5 @@
 """PX4 real sensors and route mission; test injection is off by default."""
+from pathlib import Path
 from launch import LaunchDescription
 from launch.actions import DeclareLaunchArgument
 from launch_ros.actions import Node
@@ -13,10 +14,11 @@ def generate_launch_description():
     world = PathJoinSubstitution([share, 'worlds', 'competition_course.world'])
     tests = ParameterValue(LaunchConfiguration('enable_tests'), value_type=bool)
     route = LaunchConfiguration('route')
-    logs = '/home/jiaxintang/桌面/bao/logs/flight'
+    logs = LaunchConfiguration('log_dir')
     return LaunchDescription([
         DeclareLaunchArgument('route', default_value='right', choices=['right', 'left']),
         DeclareLaunchArgument('enable_tests', default_value='false'),
+        DeclareLaunchArgument('log_dir', default_value=str(Path.home() / 'uav_logs')),
         Node(package='uav_competition', executable='px4_offboard', output='screen', parameters=[{
             'config_file': cfg, 'route': route, 'enable_tests': tests,
             'hover_test': False, 'require_sensor_preflight': True, 'log_dir': logs}]),

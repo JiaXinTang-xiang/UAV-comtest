@@ -4,6 +4,16 @@ set -eo pipefail
 ROOT="$(cd -- "$(dirname -- "${BASH_SOURCE[0]}")/.." && pwd)"
 PX4_ROOT="$ROOT/PX4-Autopilot"
 WORLD="$ROOT/uav_competition_ws/src/uav_competition/worlds/competition_course.world"
+PROFILE="${SIM_PROFILE:-standard}"
+RUN_DIR="$ROOT/logs/simulation"
+if [[ "$PROFILE" != standard && "$PROFILE" != vm ]]; then
+  echo "Unknown SIM_PROFILE: $PROFILE (use standard or vm)" >&2
+  exit 2
+fi
+if [[ -n "${BUILD_JOBS:-}" && ! "$BUILD_JOBS" =~ ^[1-9][0-9]*$ ]]; then
+  echo 'BUILD_JOBS must be a positive integer' >&2
+  exit 2
+fi
 
 if [ ! -f "$WORLD" ]; then
   echo "World file not found: $WORLD" >&2
@@ -40,6 +50,24 @@ if ! pgrep -x MicroXRCEAgent >/dev/null; then
   exit 2
 fi
 
+mkdir -p "$RUN_DIR"
+if [[ "$PROFILE" == vm ]]; then
+  GUI_ARGS=()
+  if [[ "${HEADLESS:-0}" != 1 ]]; then
+    cmake -S "$ROOT/tools/vm_gui" -B "$ROOT/tools/vm_gui/build" -DCMAKE_BUILD_TYPE=Release
+    cmake --build "$ROOT/tools/vm_gui/build" --parallel "${BUILD_JOBS:-1}"
+    GUI_ARGS=(--gui-plugin "$ROOT/tools/vm_gui/build/libbao_vm_gui.so")
+    # Use a private GUI config; leave ~/.gazebo/gui.ini alone.
+    export GAZEBO_GUI_INI_FILE="$RUN_DIR/vm-gui.ini"
+    printf '[geometry]\nx=0\ny=0\nwidth=960\nheight=640\n[rendering]\nstereo=0\n' > "$GAZEBO_GUI_INI_FILE"
+  fi
+  WORLD="$(python3 "$ROOT/scripts/prepare_vm_scene.py" --output "$RUN_DIR/vm_course.world" "${GUI_ARGS[@]}")"
+  # Physics stays at real time. A reduced speed factor would make the existing
+  # wall-clock mission and sensor deadlines inconsistent with simulated time.
+  export PX4_SIM_SPEED_FACTOR=1
+  echo 'VM profile: physics=250 Hz, camera=20 Hz, flow=10 Hz, lidar=180 beams/10 Hz, GUI=15 FPS'
+fi
+
 export PX4_SITL_WORLD="$WORLD"
 export PX4_SITL_X=5.0
 export PX4_SITL_Y=9.0
@@ -62,9 +90,8 @@ export GZ_IP="127.0.0.1"
 export GAZEBO_MODEL_PATH="$ROOT/uav_competition_ws/src/uav_competition/models:/usr/share/gazebo-11/models:$HOME/.gazebo/models:$PX4_ROOT/Tools/simulation/gazebo-classic/sitl_gazebo-classic/models${GAZEBO_MODEL_PATH:+:$GAZEBO_MODEL_PATH}"
 export GAZEBO_RESOURCE_PATH="$ROOT/uav_competition_ws/src/uav_competition/models:/usr/share/gazebo-11:/usr/share/gazebo-11/media:$PX4_ROOT/Tools/simulation/gazebo-classic/sitl_gazebo-classic/models${GAZEBO_RESOURCE_PATH:+:$GAZEBO_RESOURCE_PATH}"
 
-# Use the installed NVIDIA driver. Software OpenGL made gzclient unresponsive
-# on this computer.
-unset LIBGL_ALWAYS_SOFTWARE
+# Keep the proven desktop setting; a VM may explicitly select its own renderer.
+if [[ "$PROFILE" == standard ]]; then unset LIBGL_ALWAYS_SOFTWARE; fi
 
 echo "PX4_SITL_WORLD=$PX4_SITL_WORLD"
 echo "PX4_SITL_START=(${PX4_SITL_X},${PX4_SITL_Y},${PX4_SITL_Z})"
@@ -72,12 +99,12 @@ echo "WORLD_EXISTS=$(test -f "$PX4_SITL_WORLD" && echo yes || echo no)"
 
 # Build without the upstream unbounded model-discovery/spawn loop.
 cd "$PX4_ROOT"
-DONT_RUN=1 make px4_sitl gazebo-classic
+BUILD_ARGS=()
+if [[ -n "${BUILD_JOBS:-}" ]]; then BUILD_ARGS=(-j"$BUILD_JOBS"); fi
+DONT_RUN=1 make "${BUILD_ARGS[@]}" px4_sitl gazebo-classic
 set +u
 source "$PX4_ROOT/Tools/simulation/gazebo-classic/setup_gazebo.bash" "$PX4_ROOT" "$PX4_ROOT/build/px4_sitl_default"
 set -u
-RUN_DIR="$ROOT/logs/simulation"
-mkdir -p "$RUN_DIR"
 SERVER_PID=""
 GUI_PID=""
 PX4_PID=""

@@ -38,6 +38,14 @@ if(gazebo_FOUND)
 		set(parallel_jobs 1)
 	endif()
 
+	# The VM launcher limits memory use in the nested plugin build as well as
+	# the outer PX4 build. Do not let the external project ignore that limit.
+	if(DEFINED ENV{BUILD_JOBS} AND "$ENV{BUILD_JOBS}" MATCHES "^[1-9][0-9]*$")
+		if(parallel_jobs GREATER "$ENV{BUILD_JOBS}")
+			set(parallel_jobs "$ENV{BUILD_JOBS}")
+		endif()
+	endif()
+
 	# message(DEBUG "${NUMBER_OF_LOGICAL_CORES} logical cores detected and ${AVAILABLE_PHYSICAL_MEMORY} megabytes of memory available.
 	# 		Limiting sitl_gazebo concurrent jobs to ${parallel_jobs}")
 

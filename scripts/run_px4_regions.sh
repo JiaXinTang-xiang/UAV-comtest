@@ -14,4 +14,4 @@ sleep 1
 source /opt/ros/humble/setup.bash
 source "$PROJECT_DIR/px4_msgs_overlay_ws/install/setup.bash"
 source "$PROJECT_DIR/uav_competition_ws/install/setup.bash"
-exec ros2 launch uav_competition px4_regions.launch.py "$@"
+exec ros2 launch uav_competition px4_regions.launch.py log_dir:="$PROJECT_DIR/logs/flight" "$@"
