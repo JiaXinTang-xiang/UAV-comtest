@@ -26,7 +26,10 @@ from px4_msgs.msg import (
 from rclpy.node import Node
 from rclpy.qos import qos_profile_sensor_data
 from sensor_msgs.msg import BatteryState, Imu
-from std_msgs.msg import Bool, String
+from std_msgs.msg import Bool, String, Float32
+from .frames import MapFrame
+from .trajectory import limit_velocity
+from .path_planner import CoursePlanner
 from std_srvs.srv import Trigger
 
 
@@ -36,6 +39,11 @@ class Px4Offboard(Node):
         config = self.declare_parameter('config_file', '').value
         cfg = yaml.safe_load(Path(config).read_text()) if config else {}
         mission = cfg.get('mission', {})
+        self.frame = MapFrame(cfg.get('frames'))
+        self.acceleration = float(cfg.get('trajectory', {}).get('max_xy_acceleration', .35))
+        self.reference_velocity = [0.0, 0.0]
+        self.speed_request = None
+        self.speed_request_t = 0.0
         safety = cfg.get('safety', {})
         self.takeoff = [float(v) for v in mission.get('takeoff', [5.0, 9.0])]
         self.altitude = float(mission.get('cruise_altitude', 2.5))
@@ -52,6 +60,14 @@ class Px4Offboard(Node):
         self.flight_timeout = float(mission.get('max_mission_seconds', 180.0))
         route = self.declare_parameter('route', 'right').value
         self.xy_speed = float(cfg.get('route_profiles', {}).get(route, {}).get('max_xy_speed', mission.get('max_xy_speed', 0.5)))
+        world = self.declare_parameter('world_file', '').value
+        self.reference_map = CoursePlanner(world,
+            cfg['route_profiles'][route]['clearance'], cfg['planner']['resolution'], self.altitude,
+            cfg.get('map', {}).get('bounds', [0,10,0,10]), cfg.get('frames'),
+            [str((Path(config).parent/Path(p).expanduser()).resolve())
+             for p in cfg.get('map', {}).get('model_paths', [])]) if world else None
+        if not math.isfinite(self.acceleration) or self.acceleration <= 0:
+            raise ValueError('max_xy_acceleration must be positive')
         self.test_enabled = bool(self.declare_parameter('enable_tests', False).value)
         self.test_geofence_offset = 0.0
         self.test_events = []
@@ -118,6 +134,7 @@ class Px4Offboard(Node):
         self.create_subscription(VehicleCommandAck, '/fmu/out/vehicle_command_ack', self.ack_cb, qos)
         self.create_subscription(VehicleLandDetected, '/fmu/out/vehicle_land_detected', self.landed_cb, qos)
         self.create_subscription(PoseStamped, '/uav/command/position', self.goal_cb, 10)
+        self.create_subscription(Float32, '/uav/command/speed', self.speed_cb, 10)
         self.create_subscription(Bool, '/uav/safety/violation', self.safety_cb, 10)
         self.create_subscription(Bool, '/uav/command/hold', self.hold_cb, 10)
         self.create_service(Trigger, '/uav/test/geofence', self.geofence_test_cb)
@@ -136,7 +153,13 @@ class Px4Offboard(Node):
         if msg.data and not self.hold_requested and self.position is not None and self.origin is not None:
             self.reference = self.map_position()
             self.desired = self.reference.copy()
+            self.reference_velocity = [0.0, 0.0]
         self.hold_requested, self.hold_t = msg.data, time.monotonic()
+
+    def speed_cb(self, msg):
+        if math.isfinite(msg.data) and msg.data > 0:
+            self.speed_request = min(self.xy_speed, float(msg.data))
+            self.speed_request_t = time.monotonic()
 
     def geofence_test_cb(self, req, res):
         res.success = self.test_enabled and self.state == 'ACTIVE'
@@ -199,20 +222,21 @@ class Px4Offboard(Node):
         pose.header.stamp = self.get_clock().now().to_msg()
         pose.header.frame_id = 'map'
         pose.pose.position.x, pose.pose.position.y, pose.pose.position.z = x, y, z
-        yaw_enu = math.pi / 2.0 - msg.heading
+        yaw_enu = math.pi / 2.0 - msg.heading + self.frame.local_yaw
         pose.pose.orientation.z = math.sin(yaw_enu / 2.0)
         pose.pose.orientation.w = math.cos(yaw_enu / 2.0)
         self.position_pub.publish(pose)
         vel = TwistStamped()
         vel.header = pose.header
-        vel.twist.linear.x, vel.twist.linear.y, vel.twist.linear.z = float(msg.vy), float(msg.vx), float(-msg.vz)
+        vx, vy = self.frame.local_to_map(msg.vy, msg.vx)
+        vel.twist.linear.x, vel.twist.linear.y, vel.twist.linear.z = float(vx), float(vy), float(-msg.vz)
         self.velocity_pub.publish(vel)
 
     def map_position(self):
         p = self.position
         # ENU east = NED east (y); ENU north = NED north (x).
-        return [self.takeoff[0] + p.y - self.origin[1],
-                self.takeoff[1] + p.x - self.origin[0], self.origin[2] - p.z]
+        x, y = self.frame.local_to_map(p.y-self.origin[1], p.x-self.origin[0])
+        return [self.takeoff[0]+x, self.takeoff[1]+y, self.origin[2]-p.z]
 
     def imu_cb(self, msg):
         values = [*msg.gyro_rad, *msg.accelerometer_m_s2]
@@ -332,9 +356,17 @@ class Px4Offboard(Node):
         if self.state in ('TAKEOFF', 'HOVER', 'ACTIVE'):
             delta = [b - a for a, b in zip(self.reference, self.desired)]
             distance = math.hypot(delta[0], delta[1])
-            scale = min(1.0, self.xy_speed * dt / distance) if distance else 1.0
-            self.reference[0] += delta[0] * scale
-            self.reference[1] += delta[1] * scale
+            maximum = self.xy_speed
+            if self.speed_request is not None and time.monotonic()-self.speed_request_t < .5:
+                maximum = min(maximum, self.speed_request)
+            speed = min(maximum, math.sqrt(2*self.acceleration*distance))
+            desired_velocity = [delta[i]*speed/distance if distance else 0.0 for i in range(2)]
+            self.reference_velocity = limit_velocity(self.reference_velocity, desired_velocity, self.acceleration, dt)
+            next_xy = [self.reference[i]+self.reference_velocity[i]*dt for i in range(2)]
+            if self.reference_map and not self.reference_map.visible(self.reference[:2], next_xy):
+                self.abort('reference_path_collision')
+                return
+            self.reference[:2] = next_xy
             self.reference[2] += max(-self.climb_rate * dt, min(self.climb_rate * dt, delta[2]))
         stamp = self.get_clock().now().nanoseconds // 1000
         mode = OffboardControlMode()
@@ -342,8 +374,9 @@ class Px4Offboard(Node):
         self.offboard_pub.publish(mode)
         target = TrajectorySetpoint()
         target.timestamp = stamp
-        target.position = [float(self.origin[0] + self.reference[1] - self.takeoff[1]),
-                           float(self.origin[1] + self.reference[0] - self.takeoff[0]),
+        east, north = self.frame.map_to_local(self.reference[0]-self.takeoff[0], self.reference[1]-self.takeoff[1])
+        target.position = [float(self.origin[0] + north),
+                           float(self.origin[1] + east),
                            float(self.origin[2] - self.reference[2])]
         # NaN disables unused feed-forward terms; default zeros constrain them.
         target.velocity = [float('nan')] * 3

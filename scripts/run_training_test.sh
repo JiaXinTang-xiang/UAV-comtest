@@ -10,7 +10,7 @@ case "${1:-}" in
   corridor) ros2 service call /uav/test/corridor std_srvs/srv/Trigger '{}' ;;
   geofence) ros2 service call /uav/test/geofence std_srvs/srv/Trigger '{}' ;;
   timeout) ros2 service call /uav/test/timeout std_srvs/srv/Trigger '{}' ;;
-  obstacle) python3 "$ROOT/scripts/training_obstacle.py" add ;;
-  remove-obstacle) python3 "$ROOT/scripts/training_obstacle.py" remove ;;
+  obstacle) python3 "$ROOT/scripts/training_obstacle.py" add "${@:2}" ;;
+  remove-obstacle) python3 "$ROOT/scripts/training_obstacle.py" remove "${@:2}" ;;
   *) echo "Usage: $0 dropout|restore|corridor|geofence|timeout|obstacle|remove-obstacle" >&2; exit 2 ;;
 esac

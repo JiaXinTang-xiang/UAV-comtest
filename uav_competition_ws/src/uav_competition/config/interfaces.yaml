@@ -1,0 +1,6 @@
+# Canonical topic -> site topic, applied to every real-flight node.
+# Message types and units MUST stay compatible. No remapping is needed here.
+# Example for a lidar with sensor_msgs/LaserScan:
+#   /uav/lidar/scan: /official/lidar/scan
+# For a PX4 DDS namespace, list the /fmu/in and /fmu/out topics used by the nodes.
+remappings: {}

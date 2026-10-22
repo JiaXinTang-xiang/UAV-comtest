@@ -1,0 +1,15 @@
+# Paths starting @package are relative to the installed ROS package share.
+# @project is relative to project_dir. CLI arguments override these defaults.
+world_file: '@package/worlds/competition_course.world'
+config_file: '@package/config/mission.yaml'
+interface_file: '@package/config/interfaces.yaml'
+px4_dir: '@project/PX4-Autopilot'
+agent_prefix: '@project/Micro-XRCE-DDS-Agent/install'
+model_paths:
+  - '@package/models'
+  - '@project/PX4-Autopilot/Tools/simulation/gazebo-classic/sitl_gazebo-classic/models'
+parameter_dir: '@project/config'
+gazebo_master_uri: 'http://127.0.0.1:11345'
+gazebo_ip: '127.0.0.1'
+agent_port: 8888
+sim_model: gazebo-classic_iris

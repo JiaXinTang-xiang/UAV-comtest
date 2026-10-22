@@ -14,21 +14,30 @@ import rclpy
 from rclpy.node import Node
 from geometry_msgs.msg import PoseStamped
 from sensor_msgs.msg import LaserScan
-from std_msgs.msg import String, Bool
+from std_msgs.msg import String, Bool, Float32
 from std_srvs.srv import Trigger
 from nav_msgs.msg import Path as RosPath
 from .path_planner import CoursePlanner
+from .trajectory import smooth_path, PathTracker
 
 
 class RegionMission(Node):
     def __init__(self):
         super().__init__('px4_region_mission')
-        cfg = yaml.safe_load(Path(self.declare_parameter('config_file', '').value).read_text())
+        config = Path(self.declare_parameter('config_file', '').value)
+        cfg = yaml.safe_load(config.read_text())
         m, p = cfg['mission'], cfg['planner']
         world = self.declare_parameter('world_file', '').value
         self.route = self.declare_parameter('route', 'right').value
         profile = cfg['route_profiles'][self.route]
-        self.planner = CoursePlanner(world, profile['clearance'], p['resolution'], m['cruise_altitude'])
+        self.planner = CoursePlanner(world, profile['clearance'], p['resolution'], m['cruise_altitude'],
+            cfg.get('map', {}).get('bounds', [0, 10, 0, 10]), cfg.get('frames'),
+            [str((config.parent/Path(p).expanduser()).resolve()) for p in cfg.get('map', {}).get('model_paths', [])])
+        self.trajectory = cfg.get('trajectory', {})
+        self.tracker = None
+        self.speed_limit = float(profile.get('max_xy_speed', m['max_xy_speed']))
+        self.lidar_mount = cfg.get('frames', {}).get('lidar_pose_body', [0, 0, 0])
+        self.path_published = 0.0
         self.executor_pool = ThreadPoolExecutor(max_workers=1)
         self.planning = None
         self.replans = []
@@ -75,6 +84,7 @@ class RegionMission(Node):
         self.log = self.logdir / datetime.now().strftime('region_%Y%m%d_%H%M%S.json')
         self.pub = self.create_publisher(PoseStamped, '/uav/command/position', 10)
         self.path_pub = self.create_publisher(RosPath, '/uav/mission/path', 10)
+        self.speed_pub = self.create_publisher(Float32, '/uav/command/speed', 10)
         self.hold_pub = self.create_publisher(Bool, '/uav/command/hold', 10)
         self.state_pub = self.create_publisher(String, '/uav/mission/state', 10)
         self.create_subscription(PoseStamped, '/uav/pose', self.pose_cb, 10)
@@ -150,7 +160,7 @@ class RegionMission(Node):
             if not math.isfinite(r) or not self.scan.range_min <= r <= self.scan.range_max:
                 continue
             a = self.scan.angle_min + i * self.scan.angle_increment
-            da = math.atan2(math.sin(a - desired), math.cos(a - desired))
+            da = math.atan2(math.sin(a + self.lidar_mount[2] - desired), math.cos(a + self.lidar_mount[2] - desired))
             if abs(da) <= self.emergency_half_angle:
                 candidates.append((r, a))
         return min(candidates) if candidates else (float('inf'), desired)
@@ -171,6 +181,7 @@ class RegionMission(Node):
             res.success, res.message = False, 'Flight service unavailable'
         else:
             self.started = time.monotonic()
+            self.started_unix = time.time()
             self.transition('STARTING')
             res.success, res.message = True, 'Mission requested; waiting for flight self-check and arm'
         return res
@@ -195,6 +206,9 @@ class RegionMission(Node):
             self.land_client.call_async(Trigger.Request())
 
     def publish_path(self):
+        if time.monotonic()-self.path_published < 0.2:
+            return
+        self.path_published = time.monotonic()
         msg = RosPath()
         msg.header.frame_id = 'map'
         msg.header.stamp = self.get_clock().now().to_msg()
@@ -221,14 +235,14 @@ class RegionMission(Node):
         for i, r in enumerate(self.scan.ranges):
             if not math.isfinite(r) or not self.scan.range_min < r < 4.0:
                 continue
-            angle = yaw+self.scan.angle_min+i*self.scan.angle_increment
-            pt = (pos.x+r*math.cos(angle), pos.y+r*math.sin(angle))
+            angle = yaw+self.lidar_mount[2]+self.scan.angle_min+i*self.scan.angle_increment
+            lx, ly = self.lidar_mount[:2]
+            pt = (pos.x+lx*math.cos(yaw)-ly*math.sin(yaw)+r*math.cos(angle),
+                  pos.y+lx*math.sin(yaw)+ly*math.cos(yaw)+r*math.sin(angle))
             if math.dist((pos.x, pos.y), pt) < own_radius:
                 continue
             # Known walls are already represented by exact collision geometry.
-            wall_distance = min(math.hypot(max(x0-pt[0], 0, pt[0]-x1),
-                                          max(y0-pt[1], 0, pt[1]-y1))
-                                for x0, x1, y0, y1 in self.planner.boxes)
+            wall_distance = self.planner.static_distance(pt)
             if wall_distance < .25:
                 continue
             memory[(round(pt[0]/.10), round(pt[1]/.10))] = (now, pt)
@@ -249,11 +263,19 @@ class RegionMission(Node):
         self.hold = (pos.x, pos.y)
         self.hold_pub.publish(Bool(data=True))
         planner = copy.deepcopy(self.planner)
-        self.planning = self.executor_pool.submit(planner.plan, self.hold, self.targets[self.index][1])
+        self.planning = self.executor_pool.submit(self.plan_trajectory, planner, self.hold, self.targets[self.index][1])
         self.replans.append({'reason': reason, 'from': self.hold,
                              'region': self.targets[self.index][0], 'obstacle_points': len(planner.dynamic),
-                             'obstacles': list(planner.dynamic)})
+                             'obstacles': list(planner.dynamic), 'unix_time': time.time()})
         self.get_logger().info(f'PLAN_REQUEST {reason}; obstacle_points={len(planner.dynamic)}; holding')
+
+    def plan_trajectory(self, planner, start, goal):
+        started = time.monotonic()
+        raw = planner.plan(start, goal)
+        path = smooth_path(raw, planner.visible,
+            self.trajectory.get('corner_radius', .30), self.trajectory.get('sample_spacing', .05)) if self.trajectory.get('enabled', True) else raw
+        return path, {'planning_seconds': time.monotonic()-started,
+                      'raw_path': raw, 'smoothing_enabled': self.trajectory.get('enabled', True)}
 
     def begin_leg(self):
         self.transition(self.targets[self.index][0])
@@ -276,7 +298,8 @@ class RegionMission(Node):
                 self.log.write_text(json.dumps({'state': self.state, 'failure': self.failure,
                     'route': self.route, 'test_mode': self.test_enabled, 'test_events': self.test_events,
                     'visited': self.visited, 'planned': self.planned, 'replans': self.replans,
-                    'flight_state': self.flight, 'elapsed_s': now-self.started}, indent=2))
+                    'flight_state': self.flight, 'started_unix': self.started_unix,
+                    'finished_unix': time.time(), 'elapsed_s': now-self.started}, indent=2))
                 self.result_written = True
             return
         if self.flight == 'FAILED':
@@ -337,7 +360,7 @@ class RegionMission(Node):
             self.goal(self.hold)
             if self.planning.done():
                 try:
-                    candidate = self.planning.result()
+                    candidate, metrics = self.planning.result()
                 except Exception as exc:
                     self.replans[-1]['error'] = str(exc)
                     self.planning = None
@@ -356,27 +379,41 @@ class RegionMission(Node):
                     return
                 self.replan_started = None
                 self.path, self.path_i = candidate, 1
+                self.tracker = PathTracker(candidate)
                 self.stable = None
                 self.replans[-1]['path'] = candidate
+                self.replans[-1].update(metrics)
                 self.get_logger().info(f'PLAN_READY waypoints={len(candidate)}')
                 self.hold_pub.publish(Bool(data=False))
                 self.publish_path()
             return
         self.hold_pub.publish(Bool(data=False))
-        error = self.corridor_error(xy) + (1.0 if self.corridor_test else 0.0)
+        target, error = self.tracker.target(xy, self.trajectory.get('lookahead', .20), self.planner.visible)
+        self.path_i = self.tracker.index+1
+        error += 1.0 if self.corridor_test else 0.0
         if error > self.corridor:
             self.fail(f'outside_planned_corridor: error={error:.3f},limit={self.corridor:.3f}')
             return
         self.publish_path()
         # Check ahead before entering an obstacle's clearance envelope.
-        target = self.path[self.path_i]
         d = math.dist(xy, target)
         f = min(1.0, 2.0/d) if d else 1.0
         lookahead = (pos.x+(target[0]-pos.x)*f, pos.y+(target[1]-pos.y)*f)
         if not self.planner.visible(xy, lookahead):
             self.request_plan('lidar_path_blocked')
             return
-        target = self.path[self.path_i]
+        # Check the entire next 2 m of the curved path, not just the short
+        # tracking chord. An obstacle must be discovered before braking range.
+        horizon = 0.0
+        segment_start = xy
+        for waypoint in self.path[self.path_i:]:
+            if not self.planner.visible(segment_start, waypoint):
+                self.request_plan('lidar_path_blocked')
+                return
+            horizon += math.dist(segment_start, waypoint)
+            segment_start = waypoint
+            if horizon >= 2.0:
+                break
         self.ahead_range, self.ahead_angle = self.forward_range(target)
         if self.ahead_range < self.stop:
             # A single ray can hit a nearby side wall while the collision-box
@@ -396,22 +433,21 @@ class RegionMission(Node):
                 throttle_duration_sec=2.0)
         else:
             self.close_since = None
+        speed = self.tracker.speed(self.speed_limit, self.trajectory.get('corner_speed', .15),
+                                   self.trajectory.get('max_xy_acceleration', .35))
+        self.speed_pub.publish(Float32(data=float(speed)))
         self.goal(target)
-        if math.dist(xy, target) <= self.tol and abs(pos.z-self.alt) <= self.alt_tol:
+        if math.dist(xy, self.path[-1]) <= self.tol and abs(pos.z-self.alt) <= self.alt_tol:
             if self.stable is None:
                 self.stable = now
             if now-self.stable < .3:
                 return
-            if self.path_i < len(self.path)-1:
-                self.path_i += 1
-                self.stable = None
+            self.visited.append({'region': self.targets[self.index][0], 'x': pos.x, 'y': pos.y, 'z': pos.z})
+            self.index += 1
+            if self.index == len(self.targets):
+                self.transition('LANDING')
             else:
-                self.visited.append({'region': self.targets[self.index][0], 'x': pos.x, 'y': pos.y, 'z': pos.z})
-                self.index += 1
-                if self.index == len(self.targets):
-                    self.transition('LANDING')
-                else:
-                    self.begin_leg()
+                self.begin_leg()
         else:
             self.stable = None
 

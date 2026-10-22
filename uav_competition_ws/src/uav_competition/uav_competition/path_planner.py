@@ -5,35 +5,42 @@ is represented by a disk; clearance includes its radius and tracking margin.
 """
 import heapq
 import math
-import xml.etree.ElementTree as ET
 import time
+from .map_loader import load_footprints
+from .frames import MapFrame
 
 
 class CoursePlanner:
-    def __init__(self, world, clearance=0.65, resolution=0.1, altitude=2.5):
+    def __init__(self, world, clearance=0.65, resolution=0.1, altitude=2.5,
+                 bounds=(0, 10, 0, 10), frames=None, model_paths=()):
         self.clearance, self.resolution = clearance, resolution
-        self.boxes = []
-        for model in ET.parse(world).getroot().find('world').findall('model'):
-            if not model.get('name', '').startswith(('wall_', 'boundary_')):
-                continue
-            pose = [float(x) for x in model.findtext('pose', '0 0 0 0 0 0').split()]
-            for collision in model.findall('link/collision'):
-                size = collision.findtext('geometry/box/size')
-                if not size:
-                    continue
-                sx, sy, sz = map(float, size.split())
-                if abs(pose[5]) > 1e-6:
-                    raise ValueError('Rotated wall requires polygon collision support')
-                if pose[2] - sz / 2 <= altitude <= pose[2] + sz / 2:
-                    self.boxes.append((pose[0]-sx/2, pose[0]+sx/2, pose[1]-sy/2, pose[1]+sy/2))
+        self.bounds = tuple(bounds)
+        if (not all(math.isfinite(v) for v in (clearance, resolution, altitude, *bounds)) or
+                clearance <= 0 or resolution <= 0 or len(bounds) != 4 or
+                bounds[0] >= bounds[1] or bounds[2] >= bounds[3]):
+            raise ValueError('Invalid planner clearance, resolution or bounds')
+        frame = MapFrame(frames)
+        self.footprints = load_footprints(world, altitude+frame.origin[2], frame, model_paths)
+        # Keep boxes for diagnostics/backward-compatible test obstacle insertion.
+        self.boxes = [p.bounds for p in self.footprints]
         self.dynamic = []
+
+    def static_distance(self, p):
+        return min((f.distance(p) for f in self.footprints), default=float('inf'))
 
     def blocked_reason(self, p):
         """Distinguish physical walls from remembered lidar observations."""
         x, y = p
-        if not (self.clearance <= x <= 10-self.clearance and self.clearance <= y <= 10-self.clearance):
+        x0, x1, y0, y1 = self.bounds
+        if not (x0+self.clearance <= x <= x1-self.clearance and y0+self.clearance <= y <= y1-self.clearance):
             return 'outside planning bounds'
-        for x0, x1, y0, y1 in self.boxes:
+        for footprint in self.footprints:
+            bx0, bx1, by0, by1 = footprint.bounds
+            if math.hypot(max(bx0-x, 0, x-bx1), max(by0-y, 0, y-by1)) > self.clearance:
+                continue
+            if footprint.distance(p) <= self.clearance:
+                return f'static wall box={footprint.bounds}'
+        for x0, x1, y0, y1 in self.boxes[len(self.footprints):]:
             if math.hypot(max(x0-x, 0, x-x1), max(y0-y, 0, y-y1)) <= self.clearance:
                 return f'static wall box={(x0, x1, y0, y1)}'
         for q in self.dynamic:
